@@ -73,7 +73,7 @@ def is_downloading(folder_name):
         sleep(10)
         
 
-        for _ in range(1):
+        for _ in range(5):
             #wait for file to start download
             new_size = get_current_folder_size(folder_name)
             if new_size == 0:
