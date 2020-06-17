@@ -146,10 +146,10 @@ def downloader():
 
 
 def threaded_wget():
-
+    num_thread = int(input('enter max number of thread'))
     threads= list()
 
-    for _ in range(10):
+    for _ in range(num_thread):
         gs = threading.Thread(target=downloader)
         threads.append(gs)
         gs.daemon = True
