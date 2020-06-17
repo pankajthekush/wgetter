@@ -7,6 +7,30 @@ from ndb import return_multiple_links_curl,return_db_conn,update_link_tbl
 from datetime import datetime
 import re
 
+import zipfile
+import shutil
+
+from supload.supload import upload_file
+
+
+#https://stackoverflow.com/a/1855118/3025905
+from string import punctuation
+
+def send_to_zip(input_file):
+    
+    try:
+        uobj  = urlparse(input_file)
+        input_file = uobj.netloc
+    except Exception as e:
+        print_new(e)
+        input_file = ''.join(t for t in input_file if t.isalnum())
+
+    shutil.make_archive(input_file, 'zip', input_file)
+
+    return input_file+'.zip',input_file
+    
+
+
 
 def link_verifier(url):
     regex = re.compile(
@@ -44,21 +68,16 @@ def get_current_folder_size(folder_name):
 def is_downloading(folder_name):
     should_keep_going = True
     while should_keep_going:
-        for _ in range(10):
-            old_size = get_current_folder_size(folder_name)
-            sleep(10)
-            new_size = get_current_folder_size(folder_name)
+        size_diff = 0
+        old_size = get_current_folder_size(folder_name)
+        sleep(10)
+        new_size = get_current_folder_size(folder_name)
+        size_diff = new_size - old_size
 
-            #set the size if same then increase the counter
-            #else reset the counter
-
-            if old_size != new_size:
-                size_diff = new_size - old_size
-                print_new(f'folder : {folder_name}, old size : {old_size} , new size {new_size}, difference {size_diff}')
-                return True
-            else:
-                print_new(f'folder : {folder_name}, old size : {old_size} , new size {new_size}, difference {size_diff}')
-    return False
+        if old_size != new_size:
+            return True
+        else:
+            return False
 
 
 import sys
@@ -67,17 +86,15 @@ def download_and_wait_wget(url):
     net_location = uobj.netloc
 
     download_with_wget(url)
+    
     curr_status  = is_downloading(net_location)
 
-
     state_counter = 0
-    """ download the file and wait to know if website is downloaded or now
-
-    """
-
+    
     while True:
-        sleep(30)
+        sleep(10)
         curr_status  = is_downloading(net_location)
+        
         if curr_status == False:
             state_counter += 1
         else:
@@ -85,6 +102,7 @@ def download_and_wait_wget(url):
 
         if state_counter >= 10:
             break
+        print_new(f'{curr_status}, {url}, {state_counter}')
 
 
 def downloader():
@@ -93,29 +111,32 @@ def downloader():
         conn = return_db_conn()
         cur = conn.cursor()
         all_data = return_multiple_links_curl(cur=cur,tablename='tbl_misc_links_ihs_energy')
+        conn.commit()
         for link in all_data:
             print_new(link)
             valid_link = link_verifier(link)
-
+            begin_time  = datetime.utcnow()
+            
             if not valid_link:
+                end_time  = datetime.utcnow()
                 update_link_tbl(cur=cur,update_link=link,begin_time=begin_time,end_time=end_time,status='INVALIDURL',tablename='tbl_misc_links_ihs_energy')
                 continue
-
-            begin_time  = datetime.utcnow()
             try:
                 download_and_wait_wget(link)
                 end_time  = datetime.utcnow()
-                update_link_tbl(cur=cur,update_link=link,begin_time=begin_time,end_time=end_time,status='ERROR',tablename='tbl_misc_links_ihs_energy')
-                conn.commit()
-
-            except Exception:
-                end_time  = datetime.utcnow()
                 update_link_tbl(cur=cur,update_link=link,begin_time=begin_time,end_time=end_time,status='COMPLETE',tablename='tbl_misc_links_ihs_energy')
                 conn.commit()
+                zip_file,local_folder = send_to_zip(link)
+                upload_file(file_name=zip_file,in_sub_folder='kapowautostorerhoaiindia/wget_d',bucket_name='rhoaiautomationindias3')
+                sleep(3)
+                os.remove(zip_file)
+                shutil.rmtree(local_folder)
 
-
-
-            
+            except Exception as e:
+                raise e
+                end_time  = datetime.utcnow()
+                update_link_tbl(cur=cur,update_link=link,begin_time=begin_time,end_time=end_time,status='ERROR',tablename='tbl_misc_links_ihs_energy')
+                conn.commit()            
 
         input('done')
         cur.close()
@@ -142,6 +163,8 @@ def threaded_wget():
         print_new('running')
 
 if __name__ == "__main__":
-    threaded_wget()
-    # downloader()
-    # print(link_verifier('https://www.gogle.com'))
+    # threaded_wget()
+    downloader()
+    # download_and_wait_wget('http://example.com/')
+    # send_to_zip('http://example.com/')
+    # upload_file(file_name='www.adecco.com.zip',in_sub_folder='kapowautostorerhoaiindia/wget_d',bucket_name='rhoaiautomationindias3')
