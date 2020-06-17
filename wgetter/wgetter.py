@@ -68,12 +68,12 @@ def is_downloading(folder_name):
     should_keep_going = True
     while should_keep_going:
         size_diff = 0
-
+        new_size = 0
         old_size = get_current_folder_size(folder_name)
         sleep(10)
         
 
-        for _ in range(5):
+        for _ in range(10):
             #wait for file to start download
             new_size = get_current_folder_size(folder_name)
             if new_size == 0:
@@ -81,12 +81,7 @@ def is_downloading(folder_name):
             else:
                 break
 
-
-            
-
         size_diff = new_size - old_size
-
-        
 
 
         if old_size != new_size:
