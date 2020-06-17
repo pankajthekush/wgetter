@@ -18,16 +18,15 @@ from string import punctuation
 
 def send_to_zip(input_file):
     
+    uobj  = urlparse(input_file)
+    input_file = uobj.netloc
+
     try:
-        uobj  = urlparse(input_file)
-        input_file = uobj.netloc
-    except Exception as e:
-        print_new(e)
-        input_file = ''.join(t for t in input_file if t.isalnum())
+        shutil.make_archive(input_file, 'zip', input_file)
+    except FileNotFoundError:
+        return None,None,False
 
-    shutil.make_archive(input_file, 'zip', input_file)
-
-    return input_file+'.zip',input_file
+    return input_file+'.zip',input_file,True
     
 
 
@@ -69,10 +68,26 @@ def is_downloading(folder_name):
     should_keep_going = True
     while should_keep_going:
         size_diff = 0
+
         old_size = get_current_folder_size(folder_name)
         sleep(10)
-        new_size = get_current_folder_size(folder_name)
+        
+
+        for _ in range(10):
+            #wait for file to start download
+            new_size = get_current_folder_size(folder_name)
+            if new_size == 0:
+                sleep(30)
+            else:
+                break
+
+
+            
+
         size_diff = new_size - old_size
+
+        
+
 
         if old_size != new_size:
             return True
@@ -102,7 +117,48 @@ def download_and_wait_wget(url):
 
         if state_counter >= 10:
             break
-        print_new(f'{curr_status}, {url}, {state_counter}')
+        print_new(f'is downloading : {curr_status}, {url}, {state_counter}')
+
+
+
+def process_wget(link,cur,conn):
+    valid_link = link_verifier(link)
+    begin_time  = datetime.utcnow()
+    
+    if not valid_link:
+        end_time  = datetime.utcnow()
+        update_link_tbl(cur=cur,update_link=link,begin_time=begin_time,end_time=end_time,status='INVALIDURL',tablename='tbl_misc_links_ihs_energy')
+        conn.commit()
+        return
+    try:
+        download_and_wait_wget(link)
+        end_time  = datetime.utcnow()
+
+        zip_file,local_folder,success_stat = send_to_zip(link)
+
+        if success_stat:
+            upload_file(file_name=zip_file,in_sub_folder='kapowautostorerhoaiindia/wget_d',bucket_name='rhoaiautomationindias3')
+            sleep(3)
+            os.remove(zip_file)
+            shutil.rmtree(local_folder)
+            update_link_tbl(cur=cur,update_link=link,begin_time=begin_time,end_time=end_time,status='COMPLETE',tablename='tbl_misc_links_ihs_energy')
+            conn.commit()
+        else:
+            update_link_tbl(cur=cur,update_link=link,begin_time=begin_time,end_time=end_time,status='ERROR',tablename='tbl_misc_links_ihs_energy')
+            conn.commit()
+            upload_file(file_name=zip_file,in_sub_folder='kapowautostorerhoaiindia/wget_d',bucket_name='rhoaiautomationindias3')
+            
+
+    except Exception as e:
+        raise e
+        end_time  = datetime.utcnow()
+        update_link_tbl(cur=cur,update_link=link,begin_time=begin_time,end_time=end_time,status='ERROR',tablename='tbl_misc_links_ihs_energy')
+        conn.commit()            
+
+
+
+
+
 
 
 def downloader():
@@ -119,32 +175,9 @@ def downloader():
         
         for link in all_data:
             print_new(link)
-            valid_link = link_verifier(link)
-            begin_time  = datetime.utcnow()
-            
-            if not valid_link:
-                end_time  = datetime.utcnow()
-                update_link_tbl(cur=cur,update_link=link,begin_time=begin_time,end_time=end_time,status='INVALIDURL',tablename='tbl_misc_links_ihs_energy')
-                conn.commit()
-                continue
-            try:
-                download_and_wait_wget(link)
-                end_time  = datetime.utcnow()
-                update_link_tbl(cur=cur,update_link=link,begin_time=begin_time,end_time=end_time,status='COMPLETE',tablename='tbl_misc_links_ihs_energy')
-                conn.commit()
-                zip_file,local_folder = send_to_zip(link)
-                upload_file(file_name=zip_file,in_sub_folder='kapowautostorerhoaiindia/wget_d',bucket_name='rhoaiautomationindias3')
-                sleep(3)
-                os.remove(zip_file)
-                shutil.rmtree(local_folder)
+            process_wget(link,cur,conn)
 
-            except Exception as e:
-                raise e
-                end_time  = datetime.utcnow()
-                update_link_tbl(cur=cur,update_link=link,begin_time=begin_time,end_time=end_time,status='ERROR',tablename='tbl_misc_links_ihs_energy')
-                conn.commit()            
-
-        input('done')
+        
         cur.close()
         conn.close()
 
@@ -169,8 +202,13 @@ def threaded_wget():
         print_new('running')
 
 if __name__ == "__main__":
-    # threaded_wget()
-    downloader()
-    # download_and_wait_wget('http://example.com/')
-    # send_to_zip('http://example.com/')
-    # upload_file(file_name='www.adecco.com.zip',in_sub_folder='kapowautostorerhoaiindia/wget_d',bucket_name='rhoaiautomationindias3')
+    threaded_wget()
+    # downloader()
+    # conn = return_db_conn()
+    # cur = conn.cursor()
+
+    # process_wget('http://www.example.com',cur,conn)
+
+    # cur.close()
+    # conn.close()
+    
