@@ -120,6 +120,7 @@ def downloader():
             if not valid_link:
                 end_time  = datetime.utcnow()
                 update_link_tbl(cur=cur,update_link=link,begin_time=begin_time,end_time=end_time,status='INVALIDURL',tablename='tbl_misc_links_ihs_energy')
+                conn.commit()
                 continue
             try:
                 download_and_wait_wget(link)
