@@ -112,6 +112,11 @@ def downloader():
         cur = conn.cursor()
         all_data = return_multiple_links_curl(cur=cur,tablename='tbl_misc_links_ihs_energy')
         conn.commit()
+
+        if len(all_data) == 0:
+            sys.exit(0)
+
+        
         for link in all_data:
             print_new(link)
             valid_link = link_verifier(link)
