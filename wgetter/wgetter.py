@@ -73,7 +73,7 @@ def is_downloading(folder_name):
         sleep(10)
         
 
-        for _ in range(10):
+        for _ in range(1):
             #wait for file to start download
             new_size = get_current_folder_size(folder_name)
             if new_size == 0:
@@ -137,11 +137,11 @@ def process_wget(link,cur,conn):
         zip_file,local_folder,success_stat = send_to_zip(link)
 
         if success_stat:
-            upload_file(file_name=zip_file,in_sub_folder='kapowautostorerhoaiindia/wget_d',bucket_name='rhoaiautomationindias3')
+            correct_upload,s3_uploaded_link = upload_file(file_name=zip_file,in_sub_folder='kapowautostorerhoaiindia/wget_d',bucket_name='rhoaiautomationindias3')
             sleep(3)
             os.remove(zip_file)
             shutil.rmtree(local_folder)
-            update_link_tbl(cur=cur,update_link=link,begin_time=begin_time,end_time=end_time,status='COMPLETE',tablename='tbl_misc_links_ihs_energy')
+            update_link_tbl(cur=cur,update_link=link,begin_time=begin_time,end_time=end_time,status='COMPLETE',tablename='tbl_misc_links_ihs_energy',sthree_link=s3_uploaded_link)
             conn.commit()
         else:
             update_link_tbl(cur=cur,update_link=link,begin_time=begin_time,end_time=end_time,status='ERROR',tablename='tbl_misc_links_ihs_energy')

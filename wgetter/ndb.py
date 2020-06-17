@@ -94,9 +94,9 @@ def return_multiple_links_curl(cur,tablename):
     return rlink_list
     
 
-def update_link_tbl(cur,update_link,begin_time,end_time,status,tablename):
-    update_tuple = (status,begin_time,end_time,sys_name,update_link)
-    sql = """Update {} set t_status = %s ,begintime = %s , endtime = %s,sysname=%s where t_link = %s""".format(tablename)
+def update_link_tbl(cur,update_link,begin_time,end_time,status,tablename,sthree_link):
+    update_tuple = (status,begin_time,end_time,sys_name,sthree_link,update_link)
+    sql = """Update {} set t_status = %s ,begintime = %s , endtime = %s,sysname=%s ,awsurl=%s where t_link = %s""".format(tablename)
     cur.execute(sql,update_tuple)
 
 
