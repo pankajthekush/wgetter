@@ -12,6 +12,6 @@ setup(
     name='wgetter',
     version='1.0',
     # cmdclass={'develop': PostDevelopCommand,'install': PostInstallCommand},
-    packages=['gscrape'],
+    packages=['wgetter'],
     entry_points ={'console_scripts': ['wgetter = wgetter.wgetter:threaded_wget']}
 )
