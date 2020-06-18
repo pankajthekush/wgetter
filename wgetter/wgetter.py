@@ -17,7 +17,7 @@ from supload.supload import upload_file
 from string import punctuation
 
 def send_to_zip(input_file):
-    local_folder = input_file    
+  
     uobj  = urlparse(input_file)
     input_file = uobj.netloc
 
@@ -27,9 +27,9 @@ def send_to_zip(input_file):
         return None,None,False
     
     try:
-        shutil.rmtree(local_folder)
+        shutil.rmtree(input_file)
     except Exception:
-        print(f'could not remove {local_folder}')
+        print(f'could not remove {input_file}')
 
     return input_file+'.zip',input_file,True
     
