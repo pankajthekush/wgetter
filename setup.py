@@ -10,7 +10,7 @@ current_path  = os.path.dirname(os.path.realpath(__file__))
 
 setup(
     name='wgetter',
-    version='1.0',
+    version='1.1',
     # cmdclass={'develop': PostDevelopCommand,'install': PostInstallCommand},
     packages=['wgetter'],
     entry_points ={'console_scripts': ['wgetter = wgetter.wgetter:threaded_wget']}
