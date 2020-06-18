@@ -17,7 +17,7 @@ from supload.supload import upload_file
 from string import punctuation
 
 def send_to_zip(input_file):
-    
+    local_folder = input_file    
     uobj  = urlparse(input_file)
     input_file = uobj.netloc
 
@@ -25,6 +25,11 @@ def send_to_zip(input_file):
         shutil.make_archive(input_file, 'zip', input_file)
     except FileNotFoundError:
         return None,None,False
+    
+    try:
+        shutil.rmtree(local_folder)
+    except Exception:
+        print(f'could not remove {local_folder}')
 
     return input_file+'.zip',input_file,True
     
@@ -136,7 +141,6 @@ def process_wget(link,cur,conn):
             correct_upload,s3_uploaded_link = upload_file(file_name=zip_file,in_sub_folder='kapowautostorerhoaiindia/wget_d',bucket_name='rhoaiautomationindias3')
             sleep(3)
             os.remove(zip_file)
-            shutil.rmtree(local_folder)
             update_link_tbl(cur=cur,update_link=link,begin_time=begin_time,end_time=end_time,
             status='COMPLETE',tablename='tbl_misc_links_ihs_energy',sthree_link=s3_uploaded_link)
             conn.commit()
