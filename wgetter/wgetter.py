@@ -151,7 +151,7 @@ def process_wget(link,cur,conn):
             update_link_tbl(cur=cur,update_link=link,begin_time=begin_time,end_time=end_time,
                             status='ERROR',tablename='tbl_misc_links_ihs_energy',sthree_link='ERROR')
             conn.commit()
-            upload_file(file_name=zip_file,in_sub_folder='kapowautostorerhoaiindia/wget_d',bucket_name='rhoaiautomationindias3')
+            #upload_file(file_name=zip_file,in_sub_folder='kapowautostorerhoaiindia/wget_d',bucket_name='rhoaiautomationindias3')
             
 
     except Exception as e:
