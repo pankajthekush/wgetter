@@ -59,7 +59,7 @@ def print_new(print_statemnt):
 
 def download_with_wget(url):
     # f_wget_string = f'wget -NmkEpnp -e robots=off {url}'
-    f_wget_string = f'wget -NmkEpnp -e robots=off  -R .png,.jpg,.svg,.mp3,.mp4,.gif,.jpeg {url}'
+    f_wget_string = f'wget -NmkEpnp -e robots=off  -R .png,.jpg,.svg,.mp3,.mp4,.gif,.jpeg,.JPG,.JPEG,.MP3,.MP4 {url}'
     Popen(f_wget_string,shell=True,stdout=DEVNULL, stderr=STDOUT)
 
 
