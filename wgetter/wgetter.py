@@ -17,15 +17,14 @@ from supload.supload import upload_file
 
 
 def send_to_zip(input_file):
-    input(input_file)
+ 
     uobj  = urlparse(input_file)
     input_file = uobj.netloc
-    input(input_file)
+
     try:
-        shutil.make_archive(input_file, 'gztar', input_file)
+        shutil.make_archive(input_file, 'zip', input_file)
     except FileNotFoundError as e:
         raise e
-
         return None,None,False
 
     try:
@@ -57,7 +56,7 @@ def print_new(print_statemnt):
 
 def download_with_wget(url):
     # f_wget_string = f'wget -NmkEpnp -e robots=off {url}'
-    f_wget_string = f'wget -NmkEpnp -e robots=off -A .html , .php, .pdf, .asp, .aspx, .js .png, .jpg, .jpeg, .mp3, .mp4 , .gif -e robots=off {url}'
+    f_wget_string = f'wget -NmkEpnp -e robots=off  -R .png,.jpg,.svg,.mp3,.mp4,.gif,.jpeg {url}'
     Popen(f_wget_string,shell=True,stdout=DEVNULL, stderr=STDOUT)
 
 
@@ -142,6 +141,7 @@ def process_wget(link,cur,conn):
     try:
         download_and_wait_wget(link)
     except Exception as e:
+ 
         end_time  = datetime.utcnow()
         update_link_tbl(cur=cur,update_link=link,begin_time=begin_time,end_time=end_time,
                         status='ERROR',tablename='tbl_misc_links_ihs_energy',sthree_link='ERROR')
@@ -220,8 +220,8 @@ if __name__ == "__main__":
     conn = return_db_conn()
     cur = conn.cursor()
 
-    process_wget('http://www.chubb.com',cur,conn)
+    process_wget('http://skylinechampion.com',cur,conn)
 
     cur.close()
     conn.close()
-    # send_to_zip('http://www.yaho.com')
+    # # send_to_zip('http://www.yaho.com')
