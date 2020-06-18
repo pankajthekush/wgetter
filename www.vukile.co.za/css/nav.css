@@ -1,0 +1,99 @@
+
+body .inner > header > nav {margin:0 auto; width:100%; position:fixed; z-index:2;}
+body .inner > header > nav > ul {width:100%; max-width:475px; height:162px; position:absolute; top:0px; left:72px;}
+body .inner > header > nav > ul > li {text-align:center!important;}
+
+body .inner > header > nav > ul > li > a { display:block; height:100%; width:100%; position:absolute; z-index:4;
+background:#FFF url(../img/logo.png) top right no-repeat; background-size:cover;
+-webkit-box-shadow: 0px 3px 16px -1px rgba(0,0,0,0.75);
+-moz-box-shadow: 0px 3px 16px -1px rgba(0,0,0,0.75);
+box-shadow: 0px 3px 16px -1px rgba(0,0,0,0.75);
+font-family: 'Open Sans Condensed', sans-serif;
+border-right:solid 1px #F48422;
+}
+
+
+
+body .inner > header > nav > ul > li > a.nav div { position:absolute; top:15%; right:0px; width:29%; height:50%; color:#FFF;}
+body .inner > header > nav > ul > li > a.nav div strong {font-size:20px;font-weight:700; display:block; padding-bottom:13px; margin-bottom:5px; margin-top: 11px;}
+body .inner > header > nav > ul > li > a.nav div span {font-size:11px; display:block;font-weight:600;}
+
+.open { background:url(../img/nav/open.png) bottom center no-repeat;}
+.close { background:url(../img/nav/close.png) bottom center no-repeat;}
+.shadow {-webkit-box-shadow:none!important;
+-moz-box-shadow:none!important;
+box-shadow:none!important;
+border-right:solid 1px #FFF!important;}
+	
+body .inner > header > nav > ul > li > .dropped {display:block; height:100%; width:60%; padding:0 0 0 40%; position:fixed; top:0px; left:0px; background:#F48422; max-height:162px; z-index:3;
+-webkit-box-shadow: 0px 3px 16px -1px rgba(0,0,0,0.75);
+-moz-box-shadow: 0px 3px 16px -1px rgba(0,0,0,0.75);
+box-shadow: 0px 3px 16px -1px rgba(0,0,0,0.75);
+}
+body .inner > header > nav > ul > li > .dropped > ul.sub { float:left; width:100%; max-width:33%; margin:15px 0 0 0;}
+body .inner > header > nav > ul > li > .dropped > ul.sub li { width:90%;text-align:left;}
+body .inner > header > nav > ul > li > .dropped > ul.sub li a { display:block; text-decoration:none; color:#FFF; font-weight:600; font-size:18px; padding:12px 10px 12px 10px;-webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+	font-family: 'Open Sans Condensed', sans-serif;}
+body header > nav > ul > li > .dropped > ul.sub li a:hover{ background:#363E40;}
+
+body.nav-co a.co,
+body.nav-im a.im,
+body.nav-pp a.pp,
+body.nav-cu a.cu { background:#363E40;}
+
+/*SUB NAV*/
+ul.subnav {margin:0 auto; padding:0; list-style:none;width:auto;max-width:1348px; padding-left:92px;}
+ul.subnav > li {margin:0;padding:0;float:left; position:relative;}
+ul.subnav > li a {display:block;color:#B7B7B7; background:url(../img/nav/bg-div.png) no-repeat; background-position:100% 75%; padding:25px 15px 0px 15px; font-size:16px; font-weight:600; line-height:50px;
+font-family: 'Open Sans Condensed', sans-serif;}
+
+ul.subnav > li:last-child a {background:none;}
+ul.subnav > li a:hover, 
+ul.subnav > li:last-child a:hover { color:#FFF; background:url(../img/nav/bg-subnav.png) top left;
+-webkit-box-shadow: none;
+-moz-box-shadow: none;
+box-shadow: none;}
+
+ul.subsub {margin:0; padding:0; list-style:none;width:100%; position:absolute; top:100%; background:#363E40;}
+ul.subsub > li  {margin:0;padding:0;float:left; width:100%;}
+ul.subsub > li a {display:block;color:#FFF; background:none;font-weight:600; line-height:14px; font-size:10px; padding:10px 10px 10px 35px; box-shadow:none; font-family: 'Open Sans', sans-serif;}
+ul.subsub > li a:hover {background:url(../img/nav/bg-subnav.png) top left;}
+
+
+/*ONPAGE*/
+body.lnk-a ul.subnav li a.lnk-a,
+body.lnk-b ul.subnav li a.lnk-b,
+body.lnk-c ul.subnav li a.lnk-c,
+body.lnk-d ul.subnav li a.lnk-d,
+body.lnk-e ul.subnav li a.lnk-e,
+body.lnk-f ul.subnav li a.lnk-f,
+body.lnk-g ul.subnav li a.lnk-g,
+body.lnk-h ul.subnav li a.lnk-h,
+body.lnk-i ul.subnav li a.lnk-i,
+body.lnk-j ul.subnav li a.lnk-j
+{ color:#FFF; background:url(../img/nav/bg-subnav.png) top left;
+-webkit-box-shadow: none;
+-moz-box-shadow: none;
+box-shadow: none;}
+
+
+
+
+@media screen and (max-width: 1410px) {
+
+ul.subnav > li a {
+    display: block;
+    color: #B7B7B7;
+    background: url(../img/nav/bg-div.png) no-repeat;
+    background-position: 100% 75%;
+        padding: 25px 15px 0px 15px;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 50px;
+    font-family: 'Open Sans Condensed', sans-serif;
+}
+
+}

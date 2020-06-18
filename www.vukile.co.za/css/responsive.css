@@ -1,0 +1,1968 @@
+body .inner > header {
+	z-index: 5;
+}
+.scroll {
+	text-align: center;
+}
+
+body.home .scrn.wilth {
+   
+    width: 89%;
+    
+}
+
+
+		
+.box-bee{    border-top: 1px solid #A3A3A3;
+    margin: 26px 0px 20px 0px;
+}						
+
+
+
+.nav-pp #prop {
+	border-top: 1px solid #A3A3A3;
+}
+.nav-pp .scroll {
+	clear: both;
+}
+@media screen and (max-width: 1600px) {
+ body section > section article.lft  
+	/* HOME */
+	.main .big.show ul.img li:first-of-type {
+width: 33%;
+}
+	
+	/* PROPERTY */
+	ul.accpp li div.drop img {
+max-width: 100%;
+height: auto;
+}
+	
+	/* CORPORATE OVERVIEW */
+	#reports ul.dwnld li div p {
+font-size: 2.5vw!important;
+}
+	
+	/* FOOTER */
+	body .inner > footer {
+width: 100%;
+padding: 0;
+box-sizing: border-box;
+}
+}
+ @media screen and (max-device-width: 1600px) {
+/* HOME */
+article.hme ul li.brokers:hover,  article.hme ul li.annualrep:hover,  #reports ul.dwnld li:hover {
+	background-color: #FFF!important;
+}
+aside.news h2 {
+	max-width: none;
+	font-size: 13px;
+}
+aside.news li {
+	max-width: none;
+	font-size: 12px;
+}
+}
+ @media screen and (max-device-width: 1440px) {
+.main .big.show ul.img li:first-of-type div h1,  .main .big.show ul.img li:first-of-type div p {
+	margin: 0 50px;
+}
+.home .scroll {
+	padding: 0 50px;
+}
+}
+aside.news img {
+	margin: 0 auto;
+}
+
+.box-bee{    border-top: 1px solid #A3A3A3;
+    margin: 4px 0px 20px 0px;
+}
+
+
+@media screen and (max-width: 1366px) {
+	
+	
+	.box-bee{    border-top: 1px solid #A3A3A3;
+    margin: 26px 0px 20px 0px;
+}	
+	
+	body.home .scrn.propFund {
+    padding: 50px 100px 80px 126px!important;
+}
+	
+	.half-block {
+    position: relative;
+    display: block;
+    width: 46%!important;
+    float: left;
+    margin: 0 20px 20px 0!important;
+    min-height: 406px;
+}
+	
+	.big-block {
+    height: 270px;
+}
+	
+	.half-block>a {
+    height: 60px;
+}
+ .scrn {
+margin:0 auto;
+max-width:1336px;
+padding:0px 15px 0px 15px;
+}
+	
+aside.news .date { position: absolute; top: 15px; left: 0; width: 45px; height: 65px; color: #FFF; font-family: 'Open Sans Condensed', sans-serif; font-size: 24px; font-weight: 600; text-transform: uppercase; text-align: center; padding: 15px; background: #F48422; display: block; line-height: 24px; }
+	
+	aside.news img {
+    width: 100%
+}
+}
+ @media screen and (max-width: 1280px) {
+/* ************************************************** */
+	 
+	 
+	 .half-block {
+    position: relative;
+    display: block;
+    width: 92%!important;
+    float: left;
+    margin: 0 20px 10px 0!important;
+    height: auto;
+}
+	 
+	 .big-block {
+    height: 150px;
+}
+.wrapper {
+	width: 100%;
+	max-width: none;
+}
+.wrapper .inner {
+	border: none;
+}
+body .inner > header > nav > ul {
+	left: 0px;
+}
+header > .scrn, section > .scrn {
+	max-width: 1180px;
+}
+ul.subnav {
+	    margin: 0px 0px 0px 1px;
+	padding: 0;
+}
+ul.subnav > li > a {
+	font-size: 14px;
+	padding: 25px 15px 0px 15px;
+}
+/* ************************************************** */
+	
+	/* GENERAL */
+body .inner > header > nav > ul > li {
+	margin: 0;
+}
+ul.subsub {
+	width: 170px;
+}
+ul.subsub > li a {
+	padding: 12px 15px;
+}
+section > .scrn p.intro,  #prop,  #reports ul.dwnld li div p {
+	width: auto!important;
+	max-width: none!important;
+}
+/* HOME */
+body.home .scrn {
+	padding: 30px 50px 20px 30px;
+	float: none;
+}
+body.home .scrn.propFund {
+	padding: 50px 30px 30px 30px!important;
+}
+.main .big.show ul.img li:first-of-type {
+	padding-bottom: 0;
+}
+.unslider img {
+	height: auto;
+}
+article.hme ul li.unit p {
+	padding: 0 30px;
+}
+article.hme ul li.unitholder {
+	width: 69%;
+}
+#vision aside h1,  #vision aside ul.accpp {
+	margin-left: 30px!important;
+}
+ul.accpp {
+	width: auto;
+}
+ul.accpp li {
+	line-height: 22px;
+}
+div.cal ul > li:first-of-type p,  div.cal ul > li > p {
+	padding: 0 30px;
+}
+.subscribe {
+	background: url("../img/hme/subscribe.png") no-repeat 90% 90% transparent;
+}
+.subscribe ul li {
+	padding: 30px 0 0 30px;
+}
+.subscribe p br {
+	display: none;
+}
+.brokers {
+	background: #FFF url("../img/hme/brokers.png") no-repeat 90% 70%!important;
+}
+.annualrep {
+	background: #FFF url("../img/hme/ar.png") no-repeat 90% 70%!important;
+}
+aside.news h2 {
+	max-width: none;
+	font-size: 13px;
+}
+aside.news li {
+	max-width: none;
+	font-size: 12px;
+}
+aside.news .limit {
+	max-height: 144px;
+}
+aside.news p img {
+	max-width: 100%;
+	height: auto;
+}
+.main .big.show ul.img li:first-of-type div h1,  .main .big.show ul.img li:first-of-type div p,  .home .scroll {
+	margin: 0px 50px 0px 30px;
+}
+.main .big.show ul.img li:first-of-type div p:last-of-type {
+	padding: 0 0 40px;
+}
+.main .big.show ul.img li:first-of-type {
+	width: 33%;
+}
+.main .big.show ul.img li:nth-of-type(2) {
+	width: auto;
+	position: relative;
+}
+.main .big.show ul.img li:nth-of-type(2) img {
+	height: 100%;
+	width: auto;
+	position: absolute;
+}
+.main .big.show ul.img li:first-of-type div {
+	min-height: 535px;
+}
+.home .scroll {
+	min-height: 0!important;
+	padding: 0 0 50px 0!important;
+	width: auto!important;
+}
+.thumbnails a {
+	padding: 25px;
+	font-size: 11px;
+	cursor: pointer;
+}
+.thumbnails a.show {
+	padding: 50px 25px;
+	cursor: pointer;
+}
+aside h1,  aside h2,  aside h3,  aside h4,  aside h5,  aside p {
+	max-width: none;
+}
+/* PROPERTY */
+	/*.nav-pp .inner header section img { width: auto; height: 100%; }*/
+.nav-pp p.bghme {
+	background: url("../../img/hme/brokers.png") no-repeat scroll 50% 0% transparent;
+}
+/* INVESTORS */
+.nav-im section > .scrn p.intro {
+	padding-right: 30px;
+}
+.nav-im .pressmain .big p {
+	max-width: none;
+}
+.nav-im form {
+	max-width: 60%;
+}
+}
+	 
+	 
+ @media screen and (max-width: 1080px) {	 
+	 .img-block-mobile {display: block;}	 
+	 .hidden{display:none;}
+}
+	 
+	 
+ @media screen and (max-width: 1136px) {
+	  .half-block {
+    position: relative;
+    display: block;
+    width: 92%!important;
+    float: left;
+    margin: 0 20px 10px 0!important;
+    height: auto;
+}
+	 
+	 .big-block {
+    height: 180px;
+}
+	 
+	 
+body .inner > header > nav > ul > li > .dropped > ul.sub {
+	margin: 15px 0 0 40px;
+}
+/* HOME */
+section .scrn {
+	margin: 0 15px;
+}
+.subscribe ul {
+	width: auto;
+}
+.subscribe ul li {
+	padding: 30px 30px 0 30px;
+}
+.subscribe p {
+	max-width: 90%;
+}
+article.hme ul li.unitholder {
+	width: 65%;
+}
+.thumbnails a {
+	padding: 25px 15px;
+}
+.thumbnails a.show {
+	padding: 50px 15px;
+}
+/* CORPORATE OVERVIEW */
+.nav-co section > .scrn p {
+	max-width: none;
+	padding-right: 15px;
+}
+}
+ @media screen and (max-width: 1024px) {
+/* ************************************************** */
+ul.subnav {
+	margin: 0;
+}
+/*ul.subnav > li > a { padding:25px 10px 0px 10px; }*/
+	
+body .inner > header > nav > ul {
+	max-width: 369px;
+	height: 126px;
+	position: absolute;
+	top: 0px;
+	left: -25px;
+}
+body .inner > header > nav > ul > li > .drop > ul.sub li a {
+	font-size: 13px;
+	padding: 5px 5px 5px 10px;
+}
+body .inner > header > nav > ul > li > .drop {
+	max-height: 126px;
+}
+.wrapper .inner > section > footer {
+	min-height: 45px;
+}
+/* ************************************************** */
+	
+	/* HEADERS AND MENUS */
+body .inner > header > nav > ul > li {
+	margin: 0 0 0 20px;
+}
+body .inner > header > nav > ul > li > a.nav div strong {
+	margin-top: 4px;
+}
+body .inner > header > nav > ul > li > a.nav div span {
+	line-height: 11px;
+}
+body .inner > header > nav > ul > li > .dropped {
+	max-height: 126px;
+}
+body .inner > header > nav > ul > li > .dropped > ul.sub {
+	margin: 10px 0 0 0;
+}
+body .inner > header > nav > ul > li > .dropped > ul.sub li a {
+	padding: 8px 10px;
+	font-size: 15px;
+}
+/* HOME */
+.dots {
+	bottom: 0!important;
+}
+article.hme ul li.unitholder {
+	width: 61%;
+}
+div.inv ul {
+	width: 70%;
+}
+aside.news .limit {
+	max-height: 180px;
+}
+.main .big.show ul.img li:first-of-type div p {
+	margin: 0px 30px;
+}
+.thumbnails a {
+	padding: 10px;
+	height: 80px;
+}
+.thumbnails a.show {
+	padding: 40px 10px;
+	height: 105px;
+}
+/* CORPORATE GOVERNANCE */
+#one img {
+	max-width: 100%;
+	height: auto;
+	min-width: 720px;
+}
+	 
+	
+	 
+	 .img-block-mobile img {
+    max-width: 100%!important;
+    height: auto!important;
+    min-width: 249px!important;
+}
+	 
+	 
+	  .img-block-mobile-inner img {
+    max-width: 39%!important;
+    height: auto!important;
+    min-width: 100px!important;
+}
+/* INVESTORS */
+.nav-im form {
+	max-width: none;
+}
+}
+ @media screen and (max-width: 980px) {
+	 
+	   .half-block {
+    position: relative;
+    display: block;
+    width: 92%!important;
+    float: left;
+    margin: 0 20px 10px 0!important;
+    height: auto;
+}
+	 
+	 .big-block {
+    height: 220px;
+}
+	 
+	 
+/* HOME */
+article.hme ul li.unitholder {
+	width: 60%;
+}
+div.inv ul li a {
+	display: block;
+}
+div.inv ul li a {
+	margin: 5px 0;
+}
+div.inv ul li a:before {
+	left: auto;
+	right: 10px;
+	top: 0;
+}
+/* CORPORATE OVERVIEW */
+.nav-co #reports ul.dwnld li div p {
+	font-size: 2.2vw !important;
+}
+body.nav-co section > section article p:last-of-type {
+	padding-bottom: 0;
+}
+/* PROPERTY */
+.nav-pp .scroll table {
+	width: 1000px;
+}
+.nav-pp .scroll {
+	overflow-x: auto;
+	position: relative;
+}
+.nav-pp .scroll:before {
+	content: 'Swipe left/right on table below to view more content';
+	position: absolute;
+	top: 0;
+	left: 0;
+	font-size: 11px;
+	font-style: italic;
+	color: #F48630;
+	font-family: 'Open Sans';
+}
+/* INVESTORS */
+.nav-im ul.pressrelease .downloadCol,  .nav-im ul.webcast .downloadCol {
+	width: 100%;
+}
+.nav-im ul.pressrelease div.downloadCol,  .nav-im ul.pressrelease div.downloadCol:nth-last-of-type(-n+2),  .nav-im ul.webcast div.downloadCol,  .nav-im ul.webcast div.downloadCol:nth-last-of-type(-n+2) {
+	border-bottom: 1px solid #F6F6F6;
+	border-right: 0;
+}
+.nav-im ul.pressrelease div.downloadCol:nth-child(2n+1):after,  .nav-im ul.webcast div.downloadCol:nth-child(2n+1):after {
+	display: none;
+}
+body .inner > footer a.back-top {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+body .inner > footer span,  body .inner > footer p {
+	display: block;
+	width: 50%;
+	position: relative;
+	left: 0;
+}
+body .inner > footer span {
+	float: left;
+}
+body .inner > footer p {
+	float: right;
+}
+}
+ @media screen and (max-width: 900px) {
+/* HEADERS AND MENUS */
+body .inner > header > nav > ul > li > .dropped {
+	padding: 0 0 0 45%;
+}
+/* HOME */
+body.home .scrn {
+	padding: 30px 30px 20px 30px;
+}
+article.hme ul li.unitholder {
+	width: 55%;
+}
+.brokers h1,  .annualrep h1,  aside.news h1,  aside.subscribe h1 {
+	font-size: 30px;
+}
+aside.news .limit {
+	max-height: 270px;
+}
+.main,  .thumbnails {
+	float: none;
+}
+.thumbnails a {
+	width: 12.5%;
+	border-bottom: 1px solid rgba(244,132,34,0.5)!important;
+}
+.thumbnails a.show {
+	padding: 25px 15px;
+	height: 80px;
+	top: 0;
+}
+/* CORPORATE GOVERNANCE */
+body.nav-co section > section:first-of-type article {
+	max-width: none;
+	width: auto;
+}
+.nav-co #strategy .scrn article {
+	position: relative;
+}
+.nav-co #strategy img {
+	float: left;
+	position: absolute;
+	top: 0px;
+	left: auto;
+	right: auto;
+	width: auto;
+	height: 100%;
+}
+.nav-co #vision aside h1,  .nav-co #vision aside ul.accpp {
+	margin-left: 0 !important;
+}
+.nav-co #reports aside {
+	position: relative;
+	width: auto;
+}
+.nav-co #reports ul.dwnld {
+	width: auto;
+	border-top: 1px solid #A3A3A3;
+	margin-top: 10px;
+}
+.nav-co #reports ul.dwnld li div p {
+	font-size: 3.5vw!important;
+}
+.nav-co section > .scrn a.read {
+	margin-bottom: 40px;
+}
+body section > section aside {
+	width: auto;
+}
+body section > section article.rgt {
+	border-left: none;
+	padding: 0;
+}
+/* INVESTORS */
+.nav-im ul.subnav > li > a {
+	font-size: 12px;
+	padding: 0 15px 0px;
+}
+.nav-im section > .scrn p.intro {
+	padding-right: 0;
+}
+body.nav-im section > section article.rgt {
+	width: auto;
+}
+}
+ @media screen and (max-width: 800px) {
+	 
+	 
+
+	 
+	 
+	 
+	 
+	 
+	 
+	 .gugu{_min-height: 100%!important;} 
+	 
+	 .soweto{_min-height: 100%!important;}
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+/* HEADERS AND MENUS */
+body .inner > header > nav > ul > li > .dropped {
+	padding: 0 0 0 48%;
+}
+body .inner > header > nav > ul > li > .dropped > ul.sub {
+	max-width: 20%;
+}
+body .inner > header > nav > ul > li > .dropped > ul.sub li {
+	width: 100%;
+}
+/* HOME */
+body header > section p {
+	font-size: 22px;
+	max-height: 67px;
+	line-height: 67px;
+}
+body.home section > section article {
+	width: 100%;
+}
+article.hme ul li.unitholder {
+	width: 65.1%;
+}
+div.inv ul li a {
+	display: inline-block;
+}
+div.inv ul li a:before {
+	right: auto;
+	left: -10px;
+	top: -10px;
+}
+body.home section > section aside {
+	width: auto;
+	height: auto!important;
+}
+body.home section > section aside.subscribe {
+	width: 100%;
+	background: url('../img/hme/subscribe.png') no-repeat 95% 70%;
+}
+.subscribe ul {
+	margin: 0 0 20px 0;
+}
+body.home .scrn,  body.home aside.news .scrn {
+	padding: 30px 15px 20px;
+}
+body.home .scrn.propFund {
+	padding: 30px 15px!important;
+}
+article.hme ul li.brokers,  article.hme ul li.annualrep {
+	height: 200px;
+}
+aside.news p img {
+	float: left;
+	margin: 20px 20px 30px 0;
+}
+aside.news .date {
+	top: 35px;
+}
+aside.news br {
+	display: none;
+}
+.main .big h1 {
+	font-size: 20px;
+}
+.main .big h1 span {
+	font-size: 30px;
+}
+.main p,  .main .big.show ul.img li:first-of-type div p strong {
+	line-height: 20px;
+}
+.propFund p strong,  .main .big.show ul.img li:first-of-type div p strong {
+	font-size: 13px;
+	line-height: 20px;
+}
+.main .big.show ul.img {
+	display: block;
+}
+.main .big.show ul.img li:first-of-type {
+	display: block;
+	width: auto;
+}
+.main .big.show ul.img li:first-of-type div {
+	min-height: 0;
+}
+.main .big.show ul.img li:nth-of-type(2) img {
+	position: relative;
+	height: auto;
+	width: 100%;
+}
+.main .big.show ul.img li:first-of-type div h1 span {
+	display: inline-block;
+}
+.thumbnails a {
+	width: 20%;
+}
+.thumbnails a,  .thumbnails a.show {
+	padding: 15px;
+}
+.thumbnails a:nth-of-type(6) {
+	border-left: 0!important;
+}
+.main .big.show ul.img li:nth-of-type(2) img {
+	position: relative;
+	top: 0;
+	left: 0;
+	-webkit-transform: translate(0, 0);
+	-moz-transform: translate(0, 0);
+	-ms-transform: translate(0, 0);
+	-o-transform: translate(0, 0);
+	transform: translate(0, 0);
+	
+display: block;
+    max-width: 100%;
+    height: auto !important;
+    min-height: auto;
+	
+}
+.home .scroll {
+	padding-bottom: 0!important;
+}
+.main .big.show ul.img li:first-of-type div p:last-of-type {
+	padding-bottom: 20px;
+}
+body.home section > section aside {
+	width: 100%;
+}
+aside.news p img {
+	float: none;
+}
+.subscribe form input[type="text"],  .subscribe form input[type="submit"] {
+	width: 50%;
+}
+/* PROPERTY */
+.nav-pp form.filter {
+	float: left;
+}
+.nav-pp form.filter label {
+	float: none;
+	padding: 0;
+}
+.nav-pp #prop table tr:first-child td {
+	width: auto;
+}
+/* FOOTER */
+body .inner > footer span,  body .inner > footer p {
+	float: none;
+	text-align: right;
+	width: 100%;
+}
+body .inner > footer .scrnftr {
+	padding-bottom: 10px;
+}
+}
+ @media screen and (max-width: 768px) {
+/* ************************************************** */
+	 
+	 
+	 body .inner > header > nav > ul > li > .dropped > ul.sub {
+    max-width: 35%;
+		     margin: 10px 0 0 20px;
+}
+
+body .inner > header > nav > ul > li > .drop {
+	width: 53%;
+	padding: 0 0 0 47%;
+}
+body .inner > header > nav > ul > li > .drop > ul.sub {
+	float: left;
+	width: 100%;
+	max-width: 45%;
+	margin: 15px 0 0 0;
+}
+body .inner > header > nav > ul > li > .drop > ul.sub li a {
+	font-size: 11px;
+	padding: 5px 5px 5px 10px;
+	max-width: 90%;
+}
+.main .big h1 {
+	font-size: 15px;
+}
+.main .big h1 span {
+	font-size: 23px;
+}
+.main p {
+	font-size: 11px;
+	line-height: 16px;
+}
+.main p strong {
+	font-size: 12px;
+}
+/* ************************************************** */
+	
+article.hme ul li.unitholder {
+	width: 66%;
+}
+.main .big h1 {
+	white-space: normal;
+}
+/* GENERAL */
+article {
+	width: 100%!important;
+}
+aside {
+	width: 100%!important;
+}
+.wrapper .inner > section > header.full h1 {
+    padding: 40px 0 0 0;
+    margin-top: 5px;
+}
+div.inv ul li a:before {
+	left: auto;
+	right: 10px;
+	top: 0;
+}
+div.inv ul {
+	width: 70%;
+}
+body header > section {
+	min-height: 0;
+}
+body header > section p {
+	line-height: 24px;
+	max-height: none;
+	padding: 20px 0;
+}
+/* CORPORATE GOVERNANCE */
+.nav-co #strategy .scrn article,  body.nav-co section > section article {
+	max-width: none;
+}
+.nav-co #prop {
+	padding: 0 20px;
+}
+.nav-co section > .scrn a.read {
+	margin-bottom: 0;
+}
+.nav-co #strategy img {
+	display: none;
+}
+.nav-co section > .scrn p {
+	padding-right: 0;
+}
+#strategy article p:last-of-type,  #vision article p:last-of-type {
+	padding-bottom: 40px;
+}
+.nav-co #vision aside {
+	position: relative;
+}
+.nav-co #vision aside:before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: -15px;
+	width: 120%;
+	height: 0;
+	border-bottom: 1px solid #A3A3A3;
+}
+.nav-co #vision aside h1 {
+	margin-top: 40px;
+}
+.nav-co #reports ul.dwnld li div {
+	padding: 38px 30px;
+}
+ul.accpp li > a {
+	padding: 10px 15px;
+	font-size: 16px;
+}
+.scroll {
+	width: 100%;
+	overflow-x: scroll;
+	position: relative;
+	padding-top: 20px;
+}
+.nav-pp .scroll,  .nav-im .scroll {
+	padding-top: 0;
+}
+.nav-im .scroll:before {
+	display: none;
+}
+.scroll:before { /*content: 'Swipe left/right on image below to view more content';*/
+	position: absolute;
+	top: 0;
+	left: 0;
+	font-size: 11px;
+	font-style: italic;
+	color: #F48630;
+	font-family: 'Open Sans';
+	text-align: left;
+}
+.scroll img {
+	max-width: 100%;
+	height: auto;
+}
+.nav-co section#two > .scrn p:last-of-type {
+	padding-bottom: 0;
+}
+/* INVESTORS */
+.nav-im ul.subnav > li > a {
+	padding: 0 8px 0;
+}
+.nav-im .scroll {
+	overflow-x: auto;
+	margin: 0 0 20px 0;
+}
+.nav-im .scroll:last-of-type {
+	margin: 0;
+}
+.nav-im .scroll:before {
+	content: 'Swipe left/right on content below to view more content';
+}
+.nav-im .scroll iframe {
+	width: 700px;
+}
+.nav-im form {
+	max-width: 70%;
+}
+/* FOOTER */
+body .inner > footer p {
+	line-height: 16px;
+}
+}
+ @media screen and (max-width: 720px) {
+article.hme ul li.unitholder {
+	width: 64%;
+}
+.scroll img {
+	max-width: 720px;
+	height: auto;
+}
+/* PROPERTY */
+.nav-pp form.filter select,  .nav-pp form.filter input[type="image"] {
+	margin-bottom: 5px;
+	width: auto;
+}
+/* INVESTORS */
+.nav-im ul.subnav > li > a {
+	font-size: 11px;
+	 }
+}
+ @media screen and (max-width: 670px) {
+	 
+ 
+	 .half-block {
+    position: relative;
+    display: block;
+    width: 90%!important;
+    float: left;
+    margin: 0 20px 10px 0!important;
+    height: auto;
+}	 
+	 
+div.txt { bottom:auto;}
+	 body.nav-co header > section, body.nav-pp header > section, body.nav-cu header > section {
+    height: auto;
+    min-height: 130px;
+}
+	 
+	 div.txt {
+    position: fixed;
+    top: 75px;
+    width: 100%;
+    max-height: 95px;
+    text-transform: uppercase;
+		 z-index: 2;
+		 float: none;
+}
+	 
+	 
+	 
+h2 {
+	font-size: 15px;
+	line-height: 20px;
+}
+a.moresh {
+	margin: 40px auto 20px 85px;
+}
+/* HEADERS AND MENUS */
+body .inner > header > nav > ul {
+	width: 223px;
+	left: 0!important;
+	height: 75px;
+}
+body .inner > header > nav > ul > li {
+	margin: 0;
+}
+body .inner > header > nav > ul > li > a.shadow,  body .inner > header > nav > ul > li > a {
+	background: url("../img/logo.png") no-repeat scroll right top / contain #FFF;
+	border-right: 0!important;
+	-webkit-box-shadow: 0px 3px 16px -1px rgba(0,0,0,0.75)!important;
+	-moz-box-shadow: 0px 3px 16px -1px rgba(0,0,0,0.75)!important;
+	box-shadow: 0px 3px 16px -1px rgba(0,0,0,0.75)!important;
+}
+body .inner > header > nav > ul > li > a.nav div {
+	top: 2px;
+}
+body .inner > header > nav > ul > li > a.nav div strong {
+	margin-top: 20px;
+}
+body .inner > header > nav > ul > li > a.nav div span {
+	display: none;
+}
+body .inner > header > nav > ul > li > .dropped > ul.sub {
+	margin: 0;
+	max-width: none;
+}
+body .inner > header > nav > ul > li > .dropped > ul.sub li {
+	margin: 0;
+}
+body .inner > header > nav > ul > li > .dropped {
+	padding: 85px 0 10px 0;
+	max-height: none;
+	height: auto;
+	width: 100%;
+}
+body .inner > header > nav > ul > li > .dropped > ul.sub li a {
+	padding: 8px 10px 8px 10px;
+}
+.unslider img {
+	width: auto!important;
+	height: 200px;
+}
+.main .big.show ul.img li:nth-of-type(2) img {
+	min-height: 0;
+}
+ul.subsub {
+	display: none!important;
+}
+ul.subnav > li > a {
+	padding: 0 15px;
+	line-height: 35px;
+}
+.inner header section .txt ul.subnav {
+    background: rgba(51,51,51,.8);
+    box-shadow: 0 -5px 5px -5px #000;
+    position: fixed;
+    z-index: 999;
+}
+div.txt {
+	background: none!important;
+	max-height: none!important;
+}
+div.inv ul {
+	width: 90%;
+}
+/* GENERAL */
+p {
+	font-size: 12px;
+	line-height: 18px;
+}
+.main .big.show ul.img li:first-of-type div h1 span {
+	display: block;
+}
+.main .big h1 span {
+	padding: 0!important;
+}
+/* HOME */
+.unslider .next {
+	right: 15px!important;
+}
+.unslider .prev {
+	left: 15px!important;
+}
+.dots {
+	left: 15px!important;
+}
+article.hme ul li.unitholder {
+	width: 60%;
+}
+.brokers p {
+	font-size: 12px;
+	line-height: 18px;
+	padding: 0 0 5px 0;
+}
+aside.news p img {
+	float: none;
+	margin:  0 auto;
+}
+aside.news .date {
+	top: 15px;
+}
+/* CORPORATE GOVERNANCE */
+body.nav-co header > section > img,  .nav-pp .inner header section img,  body.nav-cu header > section > img {
+	height: 125px;
+	width: auto;
+}
+body.nav-co header > section,  body.nav-pp header > section,  body.nav-cu header > section {
+	
+	min-height: 0;
+}
+.nav-co .wrapper .inner > section,  .nav-pp .wrapper .inner > section,  .nav-cu .wrapper .inner > section {
+	margin: 0px 0px 0px;
+}
+table.box2 tr td:first-child {
+	min-width: 70%;
+}
+/* PROPERTY */
+.nav-pp h2 {
+	font-size: 16px;
+}
+/* INVESTORS */
+body.nav-im header > section > img {
+	height: 160px;
+	width: auto;
+}
+body.nav-im header > section {
+	max-height: 160px;
+	min-height: 0;
+}
+.nav-im .wrapper .inner > section {
+	margin: 0px 0px 0px;
+}
+.nav-im ul.subnav > li > a {
+	font-size: 13px;
+	padding: 0 15px;
+}
+.nav-im .scroll:before {
+	display: block;
+}
+.nav-im .scroll table.tbltxt {
+	width: 640px;
+}
+.nav-im form {
+	max-width: none;
+}
+}
+ @media all and (max-height: 650px) {
+	 
+	 
+	 
+	 .person-img-4 {
+    width: 40%;
+}
+.wrapper .inner > section {
+	float: left;
+	margin: 0px 0px 0px 0px;
+}
+/*body .inner > header > nav > ul {
+	max-width:325px;
+	max-height:110px;
+	}
+	body .inner > header > nav > ul > li > a {
+	max-width:325px;
+	max-height:110px;
+	}
+	body .inner > header > nav > ul > li > .dropped { padding:0 10% 0 30%; 
+	max-height:110px;
+	}*/
+body .inner > header > nav > ul > li > a.nav div {
+	position: absolute;
+	top: 15%;
+	right: 0px;
+	width: 29%;
+	height: 50%;
+	color: #FFF;
+}
+body .inner > header > nav > ul > li > .dropped > ul.sub li > a {
+	font-size: 16px;
+	padding: 6px 10px 6px 10px;
+}
+body header > nav > ul > li > .dropped > ul.sub li a:hover {
+	background: #363E40;
+}
+body header > section {
+	position: relative;
+	width: 100%;
+	max-width: 1600px;
+	min-height: 160px;
+	z-index: 0;
+	background: #FFF url(../img/nav/bg-txt.png) 0% 0% repeat-x;
+}
+header > section > img {
+	position: relative;
+	
+	left: 0;
+}
+ul.subnav {
+	margin: 0 auto;
+	padding: 0;
+	list-style: none;
+	width: auto;
+	max-width: 1348px;
+	padding-left: 0px;
+}
+ul.subnav > li {
+	margin: 0;
+	padding: 0;
+	float: left;
+	position: relative;
+}
+ul.subnav > li a {
+	display: block;
+	color: #B7B7B7;
+	background: url(../img/nav/bg-div.png) no-repeat;
+	background-position: 100% 75%;
+	    padding: 5px 10px 5px 10px;
+	font-size: 14px;
+	font-weight: 600;
+	line-height: 25px;
+	font-family: 'Open Sans Condensed', sans-serif;
+}
+ul.subsub {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	width: 100%;
+	position: absolute;
+	top: 100%;
+	background: #363E40;
+}
+ul.subsub > li {
+	margin: 0;
+	padding: 0;
+	float: left;
+	width: 100%;
+}
+ul.subsub > li a {
+	display: block;
+	color: #FFF;
+	background: none;
+	font-weight: 600;
+	line-height: 14px;
+	font-size: 10px;
+	padding: 10px 10px 10px 25px;
+	box-shadow: none;
+	font-family: 'Open Sans', sans-serif;
+}
+ul.subsub > li a:hover {
+	background: url(../img/nav/bg-subnav.png) top left;
+}
+}
+ @media screen and (max-width: 600px) {
+/* ************************************************** */
+.wrapper {
+	max-width: 640px;
+	height: 100%;
+}
+body header > section p {
+	font-size: 15px;
+}
+/* ************************************************** */
+}
+
+ @media screen and (max-width: 1590px) {
+
+body.home .scrn {
+    padding: 30px 20px 20px 30px!important;
+   
+}
+body.home .scrn.associates {
+    padding: 30px 0px 20px 0px!important;
+   
+}
+	 
+	.associates a {
+    display: inline-block;
+    vertical-align: middle;
+    padding: 0;
+}
+	 
+	 
+	 .associates img {
+    display: inline-block!important;
+    vertical-align: middle!important;
+
+  
+}
+
+}
+
+ @media screen and (max-width: 568px) {
+/* HOME */
+.thumbnails a,  .thumbnails a.show {
+	padding: 15px 10px;
+}
+article.hme ul li.unitholder {
+	width: 54%;
+}
+/* CORPORATE GOVERNANCE */
+body.nav-co header > section > img {
+	height: 160px;
+	width: auto;
+}
+body.nav-co header > section {
+	max-height: 160px;
+	min-height: 0;
+}
+.nav-co .wrapper .inner > section {
+	margin: 0px 0px 0px;
+}
+/* PROPERTY */
+.nav-pp p.bghme {
+	background: url("../../img/hme/brokers.png") no-repeat scroll 100% 0% transparent;
+}
+}
+ @media screen and (max-width: 480px) {
+	 
+	 .big-block {
+    min-height: 350px;
+
+}
+h1 {
+	font-size: 20px;
+	line-height: 28px;
+}
+.subscribe form input[type="text"], .subscribe form input[type="submit"] {
+	width: 80%;
+}
+/* HEADER */
+ul.subnav > li > a {
+	font-size: 12px;
+}
+/* GENERAL */
+.wrapper .inner > section > header.full h2 {
+	font-size: 7vw;
+	line-height: 7.5vw;
+}
+/* HOME */
+	/*.unslider img { width: auto!important; height: 300px; }*/
+	
+body .inner > header > nav > ul > li > .dropped {
+	padding: 85px 0 10px 0;
+}
+body .inner > header > nav > ul > li > .dropped > ul.sub li a {
+	padding: 8px 10px 8px 10px;
+}
+article.feeds ul li {
+	width: 100%;
+}
+li.highlight img {
+	display: none!important;
+}
+div.inv ul,  div.cal ul,  div.inv ul > li,  div.cal ul > li {
+	display: block;
+	height: auto;
+}
+div.inv ul {
+	width: 100%;
+}
+div.inv ul > li:first-child {
+	text-align: center;
+	border-bottom: 1px solid #A3A3A3;
+	position: relative;
+}
+div.inv ul > li:first-child:after {
+	content: '';
+	position: absolute;
+	top: 100%;
+	margin-left: -30px;
+	left: 50%;
+	height: 0;
+	width: 0;
+	border-top: 30px solid #363E40;
+	border-right: 30px solid transparent;
+	border-left: 30px solid transparent;
+}
+div.inv:before,  div.cal:before,  div.inv:after {
+	display: none;
+}
+div.inv ul > li:first-child,  div.cal ul > li {
+	padding: 10px 0;
+}
+div.inv ul > li > p {
+	padding: 35px 0 20px 0;
+	text-align: center;
+}
+div.cal ul > li,  article.feeds ul > li.updatesview {
+	border-bottom: 1px solid #A3A3A3;
+}
+div.cal ul > li:last-of-type {
+	border-bottom: 0;
+}
+.associates h1 {
+	display: block;
+	margin-bottom: 15px;
+	line-height: 18px;
+}
+ .associates img {
+	 height: 38px;
+ }
+article.hme ul li.unit {
+	width: 100%;
+}
+article.hme ul li.unitholder {
+	width: 100%;
+	position: relative;
+	border-bottom: 0;
+}
+article.hme ul li.brokers,  article.hme ul li.annualrep {
+	width: 100%;
+	height: auto;
+}
+.thumbnails a {
+	width: 33.3%;
+}
+.thumbnails a:nth-of-type(6) {
+	border-left: 2px solid #FFF!important;
+}
+.thumbnails a:nth-of-type(3n + 4) {
+	border-left: 0!important;
+}
+/* CORPORATE GOVERNANCE */
+.nav-co #prop {
+	overflow-x: auto;
+	padding-top: 20px;
+}
+.nav-co #prop .scroll {
+	position: relative;
+}
+.nav-co #prop .scroll:before {
+	content: 'Swipe left/right on table below to view more content';
+	position: absolute;
+	top: 0;
+	left: 0;
+	font-size: 11px;
+	font-style: italic;
+	color: #F48630;
+	font-family: 'Open Sans';
+	text-align: left;
+}
+.nav-co #prop .box2 {
+	width: 568px;
+}
+.nav-co #reports ul.dwnld li {
+	width: 100%;
+}
+.nav-co #reports ul.dwnld li div {
+	border-left: none!important;
+	border-right: none!important;
+	border-bottom: 1px solid #A3A3A3;
+}
+.nav-co #reports ul.dwnld li:last-of-type div {
+	border-bottom: 0;
+}
+.nav-co #reports ul.dwnld li div p {
+	font-size: 6vw!important;
+}
+.nav-co section > .scrn a.read {
+	line-height: 18px;
+	padding: 8px 15px;
+	text-align: left;
+}
+ul.accpp li > a {
+	padding: 10px 35px 10px 15px;
+}
+#one .scrn .scroll {
+	overflow-x: auto;
+}
+/* FOOTER */
+body .inner footer {
+	padding: 0 0 10px 0;
+}
+body .inner > footer span {
+	line-height: 16px;
+}
+body .inner > footer span,  body .inner > footer p {
+	display: block;
+	width: auto;
+	text-align: right;
+}
+}
+ @media screen and (max-width: 400px) {
+	 	 .inner {
+    float: left;
+    border: solid 1px #A3A3A3;
+    border-top: none;
+    border-bottom: none;
+    width: 100%;
+}
+.wrapper .inner > section > footer {
+	min-height: 0px!important;
+}
+/* INVESTORS */
+body.nav-im header > section > img {
+	height: 200px;
+}
+body.nav-im header > section {
+	max-height: 200px;
+}
+.nav-im .wrapper .inner > section {
+	margin: 0px 0px 0px;
+}
+body .inner > footer .scrnftr {
+	padding-top: 10px;
+}
+body .inner > footer p {
+	padding-top: 10px;
+	text-align: center;
+}
+body .inner > footer {
+    margin: 0 auto;
+    padding: 0%;
+    float: left;
+    width: 100%;
+    position: relative;
+    font-family: 'Open Sans', sans-serif;
+    background: #363E40;
+    border-top: solid 4px #F48422;
+    line-height: 36px;
+}
+
+
+.drop-expanded {
+    min-height: 380px;
+}
+
+ul.accppq li > a {font-size: 16px;}
+
+
+}
+
+
+ @media screen and (max-width: 375px) {
+	 .inner {
+    float: left;
+    border: solid 1px #A3A3A3;
+    border-top: none;
+    border-bottom: none;
+    width: 100%;
+}
+}
+ @media screen and (max-width: 360px) {
+	 .inner {
+    float: left;
+    border: solid 1px #A3A3A3;
+    border-top: none;
+    border-bottom: none;
+    width: 100%;
+}
+}
+ @media screen and (max-width: 320px) {
+	 .inner {
+    float: left;
+    border: solid 1px #A3A3A3;
+    border-top: none;
+    border-bottom: none;
+    width: 100%;
+	
+	
+	
+}
+
+
+.drop-expanded {
+    min-height: 490px;
+}
+
+
+/* INVESTORS */
+body.nav-im header > section > img {
+	height: 230px;
+}
+body.nav-im header > section {
+	max-height: 230px;
+}
+.nav-im .wrapper .inner > section {
+	margin: 0px 0px 0px;
+}
+.nav-pp .scroll,  .nav-im .scroll {
+	padding-top: 20px;
+}
+.associates img {
+	width: auto;
+}
+body .inner > header > nav > ul > li > .dropped {
+	padding: 85px 0 10 0;
+	max-height: 170px;
+}
+}
+
+.img-show{display: block!important;} 
+
+
+
+
+ 
+
+ @media only screen and (min-width:1308px) and (max-height:493px) {
+img {
+	width: none!important;
+}
+body .inner > header > nav > ul > li > a {
+	display: block;
+	height: 60%;
+	width: 60%;
+	position: absolute;
+	z-index: 4;
+	background: #FFF url(../img/logo.png) top right no-repeat;
+	background-size: cover;
+	-webkit-box-shadow: 0px 3px 16px -1px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0px 3px 16px -1px rgba(0,0,0,0.75);
+	box-shadow: 0px 3px 16px -1px rgba(0,0,0,0.75);
+	font-family: 'Open Sans Condensed', sans-serif;
+	border-right: solid 1px #F48422;
+}
+body .inner > header > nav > ul > li > .dropped {
+	display: block;
+	height: 100%;
+	width: 60%;
+	padding: 10px 0 0 30%;
+	position: fixed;
+	top: -20px;
+	left: 0px;
+	background: #F48422;
+	max-height: 110px;
+	z-index: 3;
+	-webkit-box-shadow: 0px 3px 16px -1px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0px 3px 16px -1px rgba(0,0,0,0.75);
+	box-shadow: 0px 3px 16px -1px rgba(0,0,0,0.75);
+}
+
+
+}
+ @media only screen and (min-width:1366px) and (max-height:768px) {
+	 
+.hmoheight{/*height:798px!important;*/}
+
+.half-block {
+    position: relative;
+    display: block;
+    width: 47%!important;
+    float: left;
+    margin: 0 20px 20px 0!important;
+    min-height: 263px;
+}
+body .inner > header > nav > ul > li > a.nav div {
+    position: absolute;
+    top: 10%;
+    right: 0px;
+    width: 29%;
+    height: 100%;
+    color: #FFF;
+    
+}
+
+body .inner > header > nav > ul > li > a.nav div span {
+    font-size: 11px;
+    display: block;
+    font-weight: 600;
+    padding: 0 8px 0 0;
+}
+
+article.hme ul li.brokers {
+    border-right: none;
+   
+    width: 50%;
+}
+
+
+article.hme ul li.annualrep {
+    border-bottom: none;
+    width: 49.9%;
+    height: auto;
+    text-align: left;
+    border-top: solid 1px #A3A3A3;
+    z-index: 3;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    box-sizing: border-box;
+    position: relative;
+}
+
+
+body .inner > header > nav > ul {width:100%; max-width:475px; height:110px; position:absolute; top:0px; left:72px;}
+
+body .inner > header > nav > ul > li > a {
+    display: block;
+    height: 100%;
+	width: 70%;
+    position: absolute;
+    z-index: 4;
+    background: #FFF url(../img/logo.png) top right no-repeat;
+    background-size: cover;
+    -webkit-box-shadow: 0px 3px 16px -1px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 3px 16px -1px rgba(0,0,0,0.75);
+    box-shadow: 0px 3px 16px -1px rgba(0,0,0,0.75);
+    font-family: 'Open Sans Condensed', sans-serif;
+    border-right: solid 1px #F48422;
+}
+body .inner > header > nav > ul > li > .dropped {
+      display: block;
+    height: 60%;
+    width: 100%;
+    padding: 10px 0 0 28%;
+    position: fixed;
+    top: -32px;
+    left: 0px;
+    background: #F48422;
+    max-height: 155px;
+    z-index: 3;
+    -webkit-box-shadow: 0px 3px 16px -1px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 3px 16px -1px rgba(0,0,0,0.75);
+    box-shadow: 0px 3px 16px -1px rgba(0,0,0,0.75);
+}
+ 
+	 
+img {
+	width: none!important;
+}
+
+ul.subnav {
+	margin: 0 auto;
+	padding: 0;
+	list-style: none;
+	width: auto;
+	max-width: 1348px; /*padding-left:92px;*/
+}
+.wrapper .inner > section > header.full h2 {
+	font-size: 25px;
+}
+body.home .scrn {
+	float: left;
+	padding: 30px 50px 20px 30px;
+	margin-bottom: 23px;
+}
+section .scrn {
+	margin: 0 auto;
+	max-width: 1366px;
+	padding: 0px 0px 0px 0px;
+	width: 87%;
+}
+body .inner > header > nav > ul > li > .dropped > ul.sub {
+	float: left;
+	width: 100%;
+	max-width: 33%;
+	margin: 28px 0 0 40px;
+}
+body.home .scrn.propFund {
+	padding: 50px 50px 60px 40px!important;
+	float: left;
+}
+.home .scroll {
+	padding: 0 50px 80px 126px;
+}
+article.hme ul li.unit p {
+	margin: 0;
+	padding: 0 30px 0 50px;
+}
+body.home aside.news .scrn {
+	padding: 0px 30px 0px 30px;
+}
+article.hme ul li.annualrep {
+ border-bottom: none;
+ width: 50%;
+ height: 255px;
+ text-align: left;
+ border-top: solid 1px #A3A3A3;
+ z-index: 3;
+ -webkit-box-sizing: border-box;
+ -moz-box-sizing: border-box;
+ -ms-box-sizing: border-box;
+ -o-box-sizing: border-box;
+ box-sizing: border-box;
+ position: relative;
+}
+}
+ @media only screen and (min-width:1466px) and (max-height:768px) {
+body.home .scrn {
+	float: left;
+	padding: 30px 50px 110px 126px;
+	margin-bottom: 39px;
+}
+body.home .scrn.propFund {
+	padding: 50px 50px 30px 30px!important;
+}
+article.hme ul li.unit p {
+	margin: 0;
+	padding: 0 30px 0 35px;
+}
+body.home aside.news .scrn {
+	padding: 0px 30px 0px 30px;}
+article.hme ul li.annualrep {
+ border-bottom: none;
+ width: 50%;
+ height: 255px;
+ text-align: left;
+ border-top: solid 1px #A3A3A3;
+ z-index: 3;
+ -webkit-box-sizing: border-box;
+ -moz-box-sizing: border-box;
+ -ms-box-sizing: border-box;
+ -o-box-sizing: border-box;
+ box-sizing: border-box;
+ position: relative;
+}
+}
+p.override-para {
+ padding-top: 0;
+
+}
+#reports {
+ min-height: 140px;
+}
+.ar {
+	height: 140px;
+}
+.crc {
+	height: 140px;
+}
+/* Additional styles JP 02-06-17 */
+.mobile-padding {
+	padding: 15px;
+}
+.mob-table-wrapper {
+	width: 100%;
+	overflow-x: auto;
+}
+.mob-table-wrapper table {
+	min-width: 1000px;
+}
+@media screen and (max-width: 1180px) {
+	aside.subscribe ul li h1 {
+		display: inline-block;
+		margin-left: 140px;
+	}
+	aside.subscribe ul li img {
+		display: inline-block;
+		position: relative;
+		float: none;
+	}
+	aside.subscribe ul li p {
+		margin-left: 140px;
+	}
+	.nav-co #vision aside:before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: -15px;
+		width: 100%;
+		height: 0;
+		border-bottom: 1px solid #A3A3A3;
+	}
+}
+@media screen and (max-width: 800px) {
+	aside.subscribe ul li h1 {
+	display: inline-block;
+    margin-left: 113px;
+    margin-top: 73px;
+	}
+	
+	
+
+	
+	
+	aside.subscribe ul li img {
+		display: inline-block;
+		position: relative;
+		float: none;
+	}
+	aside.subscribe ul li p {
+		margin-left: 140px;
+	}
+	#vision .scrn article {
+		width: 90%;
+		
+		margin-bottom: 20px;
+	}
+	#vision .scrn aside.cor-values {
+		float: none !important;
+		margin: 0;
+	}
+	#vision .scrn aside.cor-values ul.accppq {
+		margin: 0;
+	}
+	section div.scrn article {
+		width: 100%;
+	}
+	.scroll:before {
+		position: relative;
+	}
+	#directors .scrn .Divimg-4 {
+		width: 100%;
+	}
+	header img {
+		min-width: 100%;
+		width: 100%;
+		height: 100%;
+	}
+	body.nav-co header > section, body.nav-pp header > section, body.nav-cu header > section {
+		height: auto;
+		min-height: 170px;
+	}
+	
+}
+@media screen and (max-width: 370px) {
+	body .inner > header {
+		height: 130px;
+	}
+	
+}
+
+
+ @media screen and (max-width: 670px) {
+	 body.nav-co header > section, body.nav-pp header > section, body.nav-cu header > section {
+    height: auto;
+    min-height: 130px;
+}
+	 
+	 body.home .scrn.wilth {
+    padding: 30px 0px 20px 30px!important;
+	width: 89%;
+    float: none;
+}
+}
+	 
+	 @media screen and (max-width: 450px) {
+	 .box-bee {
+    border-top: 1px solid #A3A3A3;
+    margin: 26px 45px 0px 0px;
+}
+		 
+	aside.news img {
+    width: 90%;
+}
+		 
+		 .wilth{
+    width: 75%
+}
+		 
+		 
+		 aside.news .date {
+    top: -10px;
+    left: 0px;
+    width: 36px;
+    height: 39px;
+			 padding: 10px;
+}
+		 
+aside.news p img {
+	float: none;
+	margin:  20px 0px;
+}		 
+		 
+	 
+}
+
+
+
+    

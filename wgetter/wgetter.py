@@ -64,7 +64,10 @@ def get_current_folder_size(folder_name):
         for f in files:
             fp = os.path.join(root,f)
             if not os.path.islink(fp):
-                total_size += os.path.getsize(fp)
+                try:
+                    total_size += os.path.getsize(fp)
+                except FileNotFoundError:
+                    pass
     return total_size
 
 
@@ -78,7 +81,7 @@ def is_downloading(folder_name):
         sleep(10)
         
 
-        for _ in range(10):
+        for _ in range(5):
             #wait for file to start download
             new_size = get_current_folder_size(folder_name)
             if new_size == 0:
@@ -205,13 +208,13 @@ def threaded_wget():
         print_new('running')
 
 if __name__ == "__main__":
-    threaded_wget()
+    # threaded_wget()
     # downloader()
-    # conn = return_db_conn()
-    # cur = conn.cursor()
+    conn = return_db_conn()
+    cur = conn.cursor()
 
-    # process_wget('http://www.example.com',cur,conn)
+    process_wget('https://www.vukile.co.za/',cur,conn)
 
-    # cur.close()
-    # conn.close()
+    cur.close()
+    conn.close()
     
