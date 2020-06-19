@@ -137,7 +137,7 @@ def download_and_wait_wget_full(url):
             curr_status  = is_downloading(net_location)
         except ValueError as ve:
             proc.terminate()
-            shutil.rmtree(net_location)
+            delete_folder(net_location)
             raise ve
             break
 
