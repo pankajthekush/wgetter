@@ -193,6 +193,7 @@ def download_and_wait_wget(url):
             proc.terminate()
             shutil.rmtree(net_location)
             download_and_wait_wget_full(url)
+            break
             
 
             #call other downloader
