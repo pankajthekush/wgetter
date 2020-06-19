@@ -25,18 +25,24 @@ def send_to_zip(input_file):
     try:
         shutil.make_archive(input_file, 'zip', input_file)
     except FileNotFoundError as e:
-        try:
-            shutil.rmtree(input_file)
-        except Exception:
-            print(f'could not remove {input_file}')
+        for _ in range(10)
+            try:
+                shutil.rmtree(input_file)
+                break
+            except Exception:
+                print(f'could not remove {input_file}')
+                sleep(3)
         return None,None,False
 
-    try:
-        shutil.rmtree(input_file)
-    except Exception:
-        print(f'could not remove {input_file}')
+    for _ range(10)
+        try:
+            shutil.rmtree(input_file)
+            break
+        except Exception:
+            print(f'could not remove {input_file}')
+            sleep(3)
 
-    return input_file+'.zip',input_file,True
+        return input_file+'.zip',input_file,True
 
 
 
