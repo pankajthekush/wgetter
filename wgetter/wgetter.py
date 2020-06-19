@@ -21,28 +21,20 @@ def send_to_zip(input_file):
  
     uobj  = urlparse(input_file)
     input_file = uobj.netloc
+    if os.path.exists(input_file):
+        print_new(f'{input_file} exists ,will zip')
+    else:
+        print_new(f'{input_file} does not exists')
+        
 
     try:
         shutil.make_archive(input_file, 'zip', input_file)
     except FileNotFoundError as e:
-        for _ in range(10)
-            try:
-                shutil.rmtree(input_file)
-                break
-            except Exception:
-                print(f'could not remove {input_file}')
-                sleep(3)
+        delete_folder(input_file)
         return None,None,False
 
-    for _ range(10)
-        try:
-            shutil.rmtree(input_file)
-            break
-        except Exception:
-            print(f'could not remove {input_file}')
-            sleep(3)
-
-        return input_file+'.zip',input_file,True
+    delete_folder(input_file)
+    return input_file+'.zip',input_file,True
 
 
 
@@ -98,34 +90,32 @@ def get_current_folder_size(folder_name):
 
 
 def is_downloading(folder_name):
-    should_keep_going = True
-    while should_keep_going:
-        size_diff = 0
-        new_size = 0
-        old_size = get_current_folder_size(folder_name)
-        sleep(10)
+    print_new('checking downlod status')
+    size_diff = 0
+    new_size = 0
+    old_size = get_current_folder_size(folder_name)
+    sleep(30)
+
+    #wait for file to start download
+    new_size = get_current_folder_size(folder_name)
+    size_in_mb= int(new_size / (1024 * 1024))
+    
+    if size_in_mb >500:
+        raise ValueError('maximum size rached for website')
+
+    if new_size == 0:
+        raise ValueError('maximum size rached for website')
+    else:
+        pass
+    
+    sleep(10)
+    size_diff = new_size - old_size
 
 
-        for _ in range(5):
-            #wait for file to start download
-            new_size = get_current_folder_size(folder_name)
-            size_in_mb= int(new_size / (1024 * 1024))
-            
-            if size_in_mb >500:
-                raise ValueError('maximum size rached for website')
-
-            if new_size == 0:
-                return False
-            else:
-                break
-
-        size_diff = new_size - old_size
-        
-
-        if old_size != new_size:
-            return True
-        else:
-            return False
+    if old_size != new_size:
+        return True
+    else:
+        return False
 
 
 import sys
@@ -205,9 +195,23 @@ def download_and_wait_wget(url):
 
 
 
+def delete_folder(input_file):
+    for _ in range(10):
+        try:
+            shutil.rmtree(input_file)
+            break
+        except Exception:
+            print(f'could not remove {input_file}')
+            sleep(3)
+
+
 def process_wget(link,cur,conn):
     valid_link = link_verifier(link)
     begin_time  = datetime.utcnow()
+
+    uobj  = urlparse(link)
+    input_file = uobj.netloc
+
     success_stat = None
     if not valid_link:
         end_time  = datetime.utcnow()
@@ -225,20 +229,21 @@ def process_wget(link,cur,conn):
         update_link_tbl(cur=cur,update_link=link,begin_time=begin_time,end_time=end_time,
                         status='MAXSIZE',tablename='tbl_misc_links_ihs_energy',sthree_link='ERROR')
         conn.commit()
+        delete_folder(input_file)
         return
     
     if f_size <= 10:
         try:
             print_new('less than 10 , retrying with full')
+            delete_folder(input_file)
             f_size = download_and_wait_wget_full(link)
         except ValueError:
             end_time  = datetime.utcnow()
             update_link_tbl(cur=cur,update_link=link,begin_time=begin_time,end_time=end_time,
                             status='MAXSIZE',tablename='tbl_misc_links_ihs_energy',sthree_link='ERROR')
             conn.commit()
+            delete_folder(input_file)
             return
-
-    
 
 
     end_time  = datetime.utcnow()
@@ -248,7 +253,6 @@ def process_wget(link,cur,conn):
 
     if success_stat:
         correct_upload,s3_uploaded_link = upload_file(file_name=zip_file,in_sub_folder='kapowautostorerhoaiindia/wget_d',bucket_name='rhoaiautomationindias3')
-
         update_link_tbl(cur=cur,update_link=link,begin_time=begin_time,end_time=end_time,
         status='COMPLETE',tablename='tbl_misc_links_ihs_energy',sthree_link=s3_uploaded_link)
         conn.commit()
