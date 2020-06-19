@@ -108,7 +108,7 @@ def is_downloading(folder_name):
                 raise ValueError('maximum size rached for website')
 
             if new_size == 0:
-                sleep(30)
+                return False
             else:
                 break
 
@@ -172,11 +172,12 @@ def download_and_wait_wget(url):
 
         try:
             curr_status  = is_downloading(net_location)
-        except ValueError as ve:
-        
+        except ValueError as ve:        
             proc.terminate()
             shutil.rmtree(net_location)
             raise ve
+            break
+
 
         if curr_status == False:
             state_counter += 1
@@ -184,21 +185,19 @@ def download_and_wait_wget(url):
             state_counter = 0
 
 
-        f_size = get_current_folder_size(net_location)
-        size_in_mb = int(f_size / (124.0*1024.0))
-
-
-        
-        if state_counter >= 5 and size_in_mb < 1:
-            proc.terminate()
-            shutil.rmtree(net_location)
-            download_and_wait_wget_full(url)
-            break
+        # f_size = get_current_folder_size(net_location)
+        # size_in_mb = int(f_size / (124.0*1024.0))
+ 
+        # if state_counter >= 5 and size_in_mb < 1:
+        #     proc.terminate()
+        #     shutil.rmtree(net_location)
+        #     download_and_wait_wget_full(url)
+        #     break
             
 
             #call other downloader
-        if state_counter >= 5 and size_in_mb > 1:
-            break            
+        if state_counter >= 5
+            break           
         
         print_new(f'is downloading : {curr_status}, {url}, {state_counter}')
 
@@ -294,15 +293,15 @@ def threaded_wget():
         sleep(10)
 
 if __name__ == "__main__":
-    threaded_wget()
+    # threaded_wget()
     # downloader()
-    # conn = return_db_conn()
-    # cur = conn.cursor()
+    conn = return_db_conn()
+    cur = conn.cursor()
 
     # #process_wget('www.grupoenergiabogota.com',cur,conn)
     
     # process_wget('https://www.isa.com.co',cur,conn)
-    # process_wget('https://www.boliden.com',cur,conn)
-    # cur.close()
-    # conn.close()
+    process_wget('https://gxy.com/,',cur,conn)
+    cur.close()
+    conn.close()
     # download_with_wget('http://www.example.com')
