@@ -114,7 +114,7 @@ def is_downloading(folder_name):
                 break
 
         size_diff = new_size - old_size
-
+        
 
         if old_size != new_size:
             return True
@@ -246,7 +246,16 @@ def process_wget(link,cur,conn):
         update_link_tbl(cur=cur,update_link=link,begin_time=begin_time,end_time=end_time,
         status='COMPLETE',tablename='tbl_misc_links_ihs_energy',sthree_link=s3_uploaded_link)
         conn.commit()
-        os.remove(zip_file)
+        print_new(f'removing {zip_file}')
+        for _ in range(10):
+            try:
+                os.remove(zip_file)
+                break
+            except:
+                print_new(f'could not remove {zip_file}')
+                sleep(3)
+
+
     else:
         update_link_tbl(cur=cur,update_link=link,begin_time=begin_time,end_time=end_time,
                         status='ERROR',tablename='tbl_misc_links_ihs_energy',sthree_link='ERROR')
@@ -303,14 +312,14 @@ def threaded_wget():
 
 if __name__ == "__main__":
     # threaded_wget()
-    # downloader()
-    conn = return_db_conn()
-    cur = conn.cursor()
+    downloader()
+    # conn = return_db_conn()
+    # cur = conn.cursor()
 
     # process_wget('https://www.grupoenergiabogota.com',cur,conn)
     
     # process_wget('https://www.isa.com.co',cur,conn)
-    process_wget('https://www.example.com',cur,conn)
-    cur.close()
-    conn.close()
+    # process_wget('https://www.example.com',cur,conn)
+    # cur.close()
+    # conn.close()
     # download_with_wget('http://www.example.com')
