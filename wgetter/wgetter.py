@@ -65,11 +65,13 @@ def download_with_wget(url):
     
     f_wget_string = ['wget', '-NmkEpnp', '-A', '.asp,.aspx,.axd,.asx,.asmx,.ashx,.html,.htm,.xhtml,.jhtml,.jsp,.jspx,.wss,.do,.action,.js,.php,.php4,.php3,.phtml,.rss,.cgi,.asp,.axd,.asx,.asmx,.ashx,.aspx,.net,.js,.html,.htm,.xhtml,.cgi,.aspx,.ascx,.asmx,.erb,.rjs,.hta,.htc,.htmls,.rhtml,.pdf,.ASP,.ASPX,.AXD,.ASX,.ASMX,.ASHX,.HTML,.HTM,.XHTML,.JHTML,.JSP,.JSPX,.WSS,.DO,.ACTION,.JS,.PHP,.PHP4,.PHP3,.PHTML,.RSS,.CGI,.ASP,.AXD,.ASX,.ASMX,.ASHX,.ASPX,.NET,.JS,.HTML,.HTM,.XHTML,.CGI,.ASPX,.ASCX,.ASMX,.ERB,.RJS,.HTA,.HTC,.HTMLS,.RHTML,.PDF','-e','robots=off',url]
     process = subprocess.Popen(f_wget_string,stdout=DEVNULL,stderr=DEVNULL)
+    print_new(process.args)
     return process
 
 def download_wget_full_web(url):
     f_wget_string = ['wget', '-NmkEpnp', '-R','.mp3','.mp4','.jpg','.jpeg','.gif' ,'-e','robots=off',url]
     process = subprocess.Popen(f_wget_string,stdout=DEVNULL,stderr=DEVNULL)
+    print_new(process.args)
     return process
 
 
@@ -101,7 +103,6 @@ def is_downloading(folder_name):
         for _ in range(5):
             #wait for file to start download
             new_size = get_current_folder_size(folder_name)
-
             size_in_mb= int(new_size / (1024 * 1024))
             
             if size_in_mb >500:
@@ -142,6 +143,7 @@ def download_and_wait_wget_full(url):
             proc.terminate()
             shutil.rmtree(net_location)
             raise ve
+            break
 
         if curr_status == False:
             state_counter += 1
@@ -150,9 +152,12 @@ def download_and_wait_wget_full(url):
 
 
         if state_counter >= 5:
-            break
+            f_size = get_current_folder_size(net_location)
+            size_in_mb = int(f_size / (124.0*1024.0))
+            return size_in_mb
+            break            
         
-        print_new(f'is downloading : {curr_status}, {url}, {state_counter}')
+        print_new(f'is downloading retry : {curr_status}, {url}, {state_counter}')
 
 
 
@@ -162,8 +167,7 @@ def download_and_wait_wget(url):
     net_location = uobj.netloc
 
     proc = download_with_wget(url)
-
-    # curr_status  = is_downloading(net_location)
+    
 
     state_counter = 0
 
@@ -185,21 +189,13 @@ def download_and_wait_wget(url):
             state_counter = 0
 
 
-        # f_size = get_current_folder_size(net_location)
-        # size_in_mb = int(f_size / (124.0*1024.0))
- 
-        # if state_counter >= 5 and size_in_mb < 1:
-        #     proc.terminate()
-        #     shutil.rmtree(net_location)
-        #     download_and_wait_wget_full(url)
-        #     break
-            
-
-            #call other downloader
         if state_counter >= 5:
+            f_size = get_current_folder_size(net_location)
+            size_in_mb = int(f_size / (124.0*1024.0))
+            return size_in_mb
             break           
         
-        print_new(f'is downloading : {curr_status}, {url}, {state_counter}')
+        print_new(f'is downloading base: {curr_status}, {url}, {state_counter}')
 
 
 
@@ -214,15 +210,28 @@ def process_wget(link,cur,conn):
         conn.commit()
         return
 
-
+    f_size = 0
+    
     try:
-        download_and_wait_wget(link)
+        f_size = download_and_wait_wget(link)
     except ValueError:
         end_time  = datetime.utcnow()
         update_link_tbl(cur=cur,update_link=link,begin_time=begin_time,end_time=end_time,
                         status='MAXSIZE',tablename='tbl_misc_links_ihs_energy',sthree_link='ERROR')
         conn.commit()
         return
+    
+    if f_size <= 10:
+        try:
+            print_new('less than 10 , retrying with full')
+            f_size = download_and_wait_wget_full(link)
+        except ValueError:
+            end_time  = datetime.utcnow()
+            update_link_tbl(cur=cur,update_link=link,begin_time=begin_time,end_time=end_time,
+                            status='MAXSIZE',tablename='tbl_misc_links_ihs_energy',sthree_link='ERROR')
+            conn.commit()
+            return
+
     
 
 
@@ -233,11 +242,11 @@ def process_wget(link,cur,conn):
 
     if success_stat:
         correct_upload,s3_uploaded_link = upload_file(file_name=zip_file,in_sub_folder='kapowautostorerhoaiindia/wget_d',bucket_name='rhoaiautomationindias3')
-        os.remove(zip_file)
 
         update_link_tbl(cur=cur,update_link=link,begin_time=begin_time,end_time=end_time,
         status='COMPLETE',tablename='tbl_misc_links_ihs_energy',sthree_link=s3_uploaded_link)
         conn.commit()
+        os.remove(zip_file)
     else:
         update_link_tbl(cur=cur,update_link=link,begin_time=begin_time,end_time=end_time,
                         status='ERROR',tablename='tbl_misc_links_ihs_energy',sthree_link='ERROR')
@@ -298,10 +307,10 @@ if __name__ == "__main__":
     conn = return_db_conn()
     cur = conn.cursor()
 
-    # #process_wget('www.grupoenergiabogota.com',cur,conn)
+    # process_wget('https://www.grupoenergiabogota.com',cur,conn)
     
     # process_wget('https://www.isa.com.co',cur,conn)
-    process_wget('https://gxy.com/,',cur,conn)
+    process_wget('https://www.example.com',cur,conn)
     cur.close()
     conn.close()
     # download_with_wget('http://www.example.com')
