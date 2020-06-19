@@ -94,7 +94,7 @@ def is_downloading(folder_name):
     size_diff = 0
     new_size = 0
     old_size = get_current_folder_size(folder_name)
-    sleep(30)
+    sleep(10)
 
     #wait for file to start download
     new_size = get_current_folder_size(folder_name)
@@ -174,7 +174,7 @@ def download_and_wait_wget(url):
             curr_status  = is_downloading(net_location)
         except ValueError as ve:        
             proc.terminate()
-            shutil.rmtree(net_location)
+            delete_folder(net_location)
             raise ve
             break
 
