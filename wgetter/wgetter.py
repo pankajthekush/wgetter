@@ -1,4 +1,5 @@
 from subprocess import DEVNULL, STDOUT, check_call,Popen
+import subprocess
 import os
 from time import sleep
 from urllib.parse import urlparse
@@ -59,8 +60,19 @@ def print_new(print_statemnt):
 
 def download_with_wget(url):
     # f_wget_string = f'wget -NmkEpnp -e robots=off {url}'
-    f_wget_string = f'wget -NmkEpnp -e robots=off  -R .png,.jpg,.svg,.mp3,.mp4,.gif,.jpeg,.JPG,.JPEG,.MP3,.MP4 {url}'
-    Popen(f_wget_string,shell=True,stdout=DEVNULL, stderr=STDOUT)
+    # f_wget_string = """wget -NmkEpnp -e robots=off -A .asp,.aspx,.axd,.asx,.asmx,.ashx,.html,.htm,.xhtml,.jhtml,.jsp,.jspx,.wss,.do,.action,.js,.php,.php4,.php3,.phtml,.rss,.cgi,.asp,.axd,.asx,.asmx,.ashx,.aspx,.net,.js,.html,.htm,.xhtml,.cgi,.aspx,.ascx,.asmx,.erb,.rjs,.hta,.htc,.htmls,.rhtml,.pdf,.ASP,.ASPX,.AXD,.ASX,.ASMX,.ASHX,.HTML,    .HTM,.XHTML,.JHTML,.JSP,.JSPX,.WSS,.DO,.ACTION,.JS,.PHP,.PHP4,.PHP3,.PHTML,.RSS,.CGI,.ASP,.AXD,.ASX,.ASMX,.ASHX,.ASPX,.NET,.JS,.HTML,.HTM,.XHTML,.CGI,.ASPX,.ASCX,.ASMX,.ERB,.RJS,.HTA,.HTC,.HTMLS,.RHTML,.PDF {0}""".format(url)
+    # Popen(f_wget_string,shell=True,stdout=DEVNULL, stderr=STDOUT)
+    
+    f_wget_string = ['wget', '-NmkEpnp', '-A', '.asp,.aspx,.axd,.asx,.asmx,.ashx,.html,.htm,.xhtml,.jhtml,.jsp,.jspx,.wss,.do,.action,.js,.php,.php4,.php3,.phtml,.rss,.cgi,.asp,.axd,.asx,.asmx,.ashx,.aspx,.net,.js,.html,.htm,.xhtml,.cgi,.aspx,.ascx,.asmx,.erb,.rjs,.hta,.htc,.htmls,.rhtml,.pdf,.ASP,.ASPX,.AXD,.ASX,.ASMX,.ASHX,.HTML,.HTM,.XHTML,.JHTML,.JSP,.JSPX,.WSS,.DO,.ACTION,.JS,.PHP,.PHP4,.PHP3,.PHTML,.RSS,.CGI,.ASP,.AXD,.ASX,.ASMX,.ASHX,.ASPX,.NET,.JS,.HTML,.HTM,.XHTML,.CGI,.ASPX,.ASCX,.ASMX,.ERB,.RJS,.HTA,.HTC,.HTMLS,.RHTML,.PDF','-e','robots=off',url]
+    process = subprocess.Popen(f_wget_string,stdout=DEVNULL,stderr=DEVNULL)
+    return process
+
+def download_wget_full_web(url):
+    f_wget_string = ['wget', '-NmkEpnp', '-R','.mp3','.mp4','.jpg','.jpeg','.gif' ,'-e','robots=off',url]
+    process = subprocess.Popen(f_wget_string,stdout=DEVNULL,stderr=DEVNULL)
+    return process
+
+
 
 
 def get_current_folder_size(folder_name):
@@ -89,6 +101,12 @@ def is_downloading(folder_name):
         for _ in range(5):
             #wait for file to start download
             new_size = get_current_folder_size(folder_name)
+
+            size_in_mb= int(new_size / (1024 * 1024))
+            
+            if size_in_mb >500:
+                raise ValueError('maximum size rached for website')
+
             if new_size == 0:
                 sleep(30)
             else:
@@ -104,27 +122,83 @@ def is_downloading(folder_name):
 
 
 import sys
-def download_and_wait_wget(url):
+def download_and_wait_wget_full(url):
+
+    print('secondary downloader fired')
     uobj  = urlparse(url)
     net_location = uobj.netloc
 
-    download_with_wget(url)
+    proc = download_wget_full_web(url)
 
-    curr_status  = is_downloading(net_location)
 
     state_counter = 0
 
     while True:
         sleep(10)
-        curr_status  = is_downloading(net_location)
+
+        try:
+            curr_status  = is_downloading(net_location)
+        except ValueError as ve:
+            proc.terminate()
+            shutil.rmtree(net_location)
+            raise ve
 
         if curr_status == False:
             state_counter += 1
         else:
             state_counter = 0
 
+
         if state_counter >= 5:
             break
+        
+        print_new(f'is downloading : {curr_status}, {url}, {state_counter}')
+
+
+
+
+def download_and_wait_wget(url):
+    uobj  = urlparse(url)
+    net_location = uobj.netloc
+
+    proc = download_with_wget(url)
+
+    # curr_status  = is_downloading(net_location)
+
+    state_counter = 0
+
+    while True:
+        sleep(10)
+
+        try:
+            curr_status  = is_downloading(net_location)
+        except ValueError as ve:
+        
+            proc.terminate()
+            shutil.rmtree(net_location)
+            raise ve
+
+        if curr_status == False:
+            state_counter += 1
+        else:
+            state_counter = 0
+
+
+        f_size = get_current_folder_size(net_location)
+        size_in_mb = int(f_size / (124.0*1024.0))
+
+
+        
+        if state_counter >= 5 and size_in_mb < 1:
+            proc.terminate()
+            shutil.rmtree(net_location)
+            download_and_wait_wget_full(url)
+            
+
+            #call other downloader
+        if state_counter >= 5 and size_in_mb > 1:
+            break            
+        
         print_new(f'is downloading : {curr_status}, {url}, {state_counter}')
 
 
@@ -143,13 +217,14 @@ def process_wget(link,cur,conn):
 
     try:
         download_and_wait_wget(link)
-    except Exception as e:
- 
+    except ValueError:
         end_time  = datetime.utcnow()
         update_link_tbl(cur=cur,update_link=link,begin_time=begin_time,end_time=end_time,
-                        status='ERROR',tablename='tbl_misc_links_ihs_energy',sthree_link='ERROR')
+                        status='MAXSIZE',tablename='tbl_misc_links_ihs_energy',sthree_link='ERROR')
         conn.commit()
         return
+    
+
 
     end_time  = datetime.utcnow()
     zip_file,local_folder,success_stat = send_to_zip(link)
@@ -218,13 +293,15 @@ def threaded_wget():
         sleep(10)
 
 if __name__ == "__main__":
-    # threaded_wget()
+    threaded_wget()
     # downloader()
-    conn = return_db_conn()
-    cur = conn.cursor()
+    # conn = return_db_conn()
+    # cur = conn.cursor()
 
-    process_wget('http://skylinechampion.com',cur,conn)
-
-    cur.close()
-    conn.close()
-    # # send_to_zip('http://www.yaho.com')
+    # #process_wget('www.grupoenergiabogota.com',cur,conn)
+    
+    # process_wget('https://www.isa.com.co',cur,conn)
+    # process_wget('https://www.boliden.com',cur,conn)
+    # cur.close()
+    # conn.close()
+    # download_with_wget('http://www.example.com')
