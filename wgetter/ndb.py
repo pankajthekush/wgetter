@@ -52,22 +52,31 @@ create_db_file()
 
 def return_db_conn(ApplicationName = "gscrap"):
     
+    dbname=None
+    user=None
+    host=None
+    password=None
+
     if sys_platform == 'linux':
         config_file_path = 'dbdata.json'
     else:
         config_file_path = os.path.join(current_path,'dbdata.json')
 
-    with open(config_file_path,'r') as f:
-        db_data = json.load(f)
-        dbname=db_data['dbname']
-        user=db_data['user']
-        host=db_data['host']
-        password=db_data['password']
-        if ApplicationName == 'gscrap':
-            app_name = db_data['ApplicationName']
-            ApplicationName = sys_name + ":" + app_name
-        else:
+    for _ in range(5):
+        try:
+            with open(config_file_path,'r') as f:
+                db_data = json.load(f)
+                dbname=db_data['dbname']
+                user=db_data['user']
+                host=db_data['host']
+                password=db_data['password']
+                break
+        except:
+            print('error reading db file')
+            sleep(4)
+
             pass
+
     
     #logging.debug("Creating new connection")
     conn = None
