@@ -196,7 +196,7 @@ def download_and_wait_wget(url):
             
 
             #call other downloader
-        if state_counter >= 5
+        if state_counter >= 5:
             break           
         
         print_new(f'is downloading : {curr_status}, {url}, {state_counter}')
