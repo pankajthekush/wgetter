@@ -89,20 +89,23 @@ def get_current_folder_size(folder_name):
 
 
 
-def is_downloading(folder_name):
+def is_downloading(folder_name,max_size):
+
     print_new('checking downlod status')
     size_diff = 0
     new_size = 0
     old_size = get_current_folder_size(folder_name)
     sleep(10)
-
+    
     #wait for file to start download
     new_size = get_current_folder_size(folder_name)
     size_in_mb= int(new_size / (1024 * 1024))
     
-    if size_in_mb >500:
-        raise ValueError('maximum size rached for website')
+    print(f'size of {folder_name} is {size_in_mb}')
 
+    if size_in_mb > int(max_size):
+        raise ValueError('maximum size rached for website')
+    
     if new_size == 0:
         raise ValueError('maximum size rached for website')
     else:
@@ -119,7 +122,7 @@ def is_downloading(folder_name):
 
 
 import sys
-def download_and_wait_wget_full(url):
+def download_and_wait_wget_full(url,max_size):
 
     print('secondary downloader fired')
     uobj  = urlparse(url)
@@ -158,7 +161,7 @@ def download_and_wait_wget_full(url):
 
 
 
-def download_and_wait_wget(url):
+def download_and_wait_wget(url,max_size):
     uobj  = urlparse(url)
     net_location = uobj.netloc
 
@@ -171,7 +174,7 @@ def download_and_wait_wget(url):
         sleep(10)
 
         try:
-            curr_status  = is_downloading(net_location)
+            curr_status  = is_downloading(net_location,max_size)
         except ValueError as ve:        
             proc.terminate()
             delete_folder(net_location)
@@ -205,7 +208,7 @@ def delete_folder(input_file):
             sleep(3)
 
 
-def process_wget(link,cur,conn):
+def process_wget(link,cur,conn,max_size):
     valid_link = link_verifier(link)
     begin_time  = datetime.utcnow()
 
@@ -223,7 +226,7 @@ def process_wget(link,cur,conn):
     f_size = 0
     
     try:
-        f_size = download_and_wait_wget(link)
+        f_size = download_and_wait_wget(link,max_size)
     except ValueError:
         end_time  = datetime.utcnow()
         update_link_tbl(cur=cur,update_link=link,begin_time=begin_time,end_time=end_time,
@@ -280,7 +283,7 @@ def process_wget(link,cur,conn):
 
 
 
-def downloader():
+def downloader(max_size):
 
     while True:
         conn = return_db_conn()
@@ -294,7 +297,7 @@ def downloader():
 
         for link in all_data:
             print_new(link)
-            process_wget(link,cur,conn)
+            process_wget(link,cur,conn,max_size)
 
 
         cur.close()
@@ -304,10 +307,11 @@ def downloader():
 
 def threaded_wget():
     num_thread = int(input('enter max number of thread: '))
+    max_size = input('maximum size of file in mb: ')
     threads= list()
 
     for _ in range(num_thread):
-        gs = threading.Thread(target=downloader)
+        gs = threading.Thread(target=downloader,args=(max_size,))
         threads.append(gs)
         gs.daemon = True
         gs.start()
@@ -321,8 +325,8 @@ def threaded_wget():
         sleep(10)
 
 if __name__ == "__main__":
-    # threaded_wget()
-    downloader()
+    threaded_wget()
+    # downloader(1)
     # conn = return_db_conn()
     # cur = conn.cursor()
 
