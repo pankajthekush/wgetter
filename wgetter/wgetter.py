@@ -292,6 +292,7 @@ def downloader(max_size):
             
             uobj  = urlparse(link)
             net_location = uobj.netloc
+            delete_folder.clear()
             folder_to_remove.append(net_location)
 
         cur.close()
