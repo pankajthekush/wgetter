@@ -14,7 +14,7 @@ import shutil
 from supload.supload import upload_file
 
 
-
+folder_to_remove = list()
 
 
 def send_to_zip(input_file):
@@ -67,7 +67,7 @@ def download_with_wget(url):
     return process
 
 def download_wget_full_web(url):
-    f_wget_string = ['wget', '-NmkEpnp', '-R','.mp3','.mp4','.jpg','.jpeg','.gif' ,'-e','robots=off',url]
+    f_wget_string = ['wget', '-NmkEpnp', '-R','.mp3','.mp4','.rpm' ,'-e','robots=off',url]
     process = subprocess.Popen(f_wget_string,stdout=DEVNULL,stderr=DEVNULL)
     print_new(process.args)
     return process
@@ -137,7 +137,7 @@ def download_and_wait_wget_full(url,max_size):
         sleep(10)
 
         try:
-            curr_status  = is_downloading(net_location)
+            curr_status  = is_downloading(net_location,max_size=max_size)
         except ValueError as ve:
             proc.terminate()
             delete_folder(net_location)
@@ -226,7 +226,7 @@ def process_wget(link,cur,conn,max_size):
     f_size = 0
     
     try:
-        f_size = download_and_wait_wget(link,max_size)
+        f_size = download_and_wait_wget_full(link,max_size)
     except ValueError:
         end_time  = datetime.utcnow()
         update_link_tbl(cur=cur,update_link=link,begin_time=begin_time,end_time=end_time,
@@ -235,19 +235,6 @@ def process_wget(link,cur,conn,max_size):
         delete_folder(input_file)
         return
     
-    if f_size <= 10:
-        try:
-            print_new('less than 10 , retrying with full')
-            delete_folder(input_file)
-            f_size = download_and_wait_wget_full(link)
-        except ValueError:
-            end_time  = datetime.utcnow()
-            update_link_tbl(cur=cur,update_link=link,begin_time=begin_time,end_time=end_time,
-                            status='MAXSIZE',tablename='tbl_misc_links_ihs_energy',sthree_link='ERROR')
-            conn.commit()
-            delete_folder(input_file)
-            return
-
 
     end_time  = datetime.utcnow()
     zip_file,local_folder,success_stat = send_to_zip(link)
@@ -283,6 +270,8 @@ def process_wget(link,cur,conn,max_size):
 
 
 
+
+
 def downloader(max_size):
 
     while True:
@@ -291,14 +280,19 @@ def downloader(max_size):
         all_data = return_multiple_links_curl(cur=cur,tablename='tbl_misc_links_ihs_energy')
         conn.commit()
 
+        for fol in folder_to_remove:
+            delete_folder(fol)
+
         if len(all_data) == 0:
             sys.exit(0)
-
 
         for link in all_data:
             print_new(link)
             process_wget(link,cur,conn,max_size)
-
+            
+            uobj  = urlparse(link)
+            net_location = uobj.netloc
+            folder_to_remove.append(net_location)
 
         cur.close()
         conn.close()
