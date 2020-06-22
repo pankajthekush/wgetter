@@ -91,7 +91,7 @@ def get_current_folder_size(folder_name):
 
 def is_downloading(folder_name,max_size):
 
-    print_new('checking downlod status')
+
     size_diff = 0
     new_size = 0
     old_size = get_current_folder_size(folder_name)
@@ -318,6 +318,15 @@ def threaded_wget():
         dead_threads =  num_thread - (threading.active_count() - 1 ) # -1 to exclude main thread
         print(f'total thread:{threading.active_count()} , dead thread: {dead_threads}')
         sleep(10)
+
+         if dead_threads > 0:
+            dead_thread_count += dead_threads
+
+            for _ in range(dead_threads):
+                gs = threading.Thread(target=main_scrape)
+                gs.daemon = True
+                gs.start()
+
 
 if __name__ == "__main__":
     threaded_wget()
