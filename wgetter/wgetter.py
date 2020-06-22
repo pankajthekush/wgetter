@@ -30,10 +30,8 @@ def send_to_zip(input_file):
     try:
         shutil.make_archive(input_file, 'zip', input_file)
     except FileNotFoundError as e:
-        delete_folder(input_file)
         return None,None,False
 
-    delete_folder(input_file)
     return input_file+'.zip',input_file,True
 
 
@@ -135,14 +133,12 @@ def download_and_wait_wget_full(url,max_size):
 
     while True:
         sleep(10)
-
         try:
             curr_status  = is_downloading(net_location,max_size=max_size)
         except ValueError as ve:
             proc.terminate()
-            delete_folder(net_location)
             raise ve
-            break
+            
 
         if curr_status == False:
             state_counter += 1
@@ -166,7 +162,6 @@ def download_and_wait_wget(url,max_size):
     net_location = uobj.netloc
 
     proc = download_with_wget(url)
-    
 
     state_counter = 0
 
@@ -177,7 +172,6 @@ def download_and_wait_wget(url,max_size):
             curr_status  = is_downloading(net_location,max_size)
         except ValueError as ve:        
             proc.terminate()
-            delete_folder(net_location)
             raise ve
             break
 
@@ -232,7 +226,7 @@ def process_wget(link,cur,conn,max_size):
         update_link_tbl(cur=cur,update_link=link,begin_time=begin_time,end_time=end_time,
                         status='MAXSIZE',tablename='tbl_misc_links_ihs_energy',sthree_link='ERROR')
         conn.commit()
-        delete_folder(input_file)
+
         return
     
 
@@ -267,11 +261,6 @@ def process_wget(link,cur,conn,max_size):
 
 
 
-
-
-
-
-
 def downloader(max_size):
 
     while True:
@@ -292,7 +281,7 @@ def downloader(max_size):
             
             uobj  = urlparse(link)
             net_location = uobj.netloc
-            delete_folder.clear()
+            folder_to_remove.clear()
             folder_to_remove.append(net_location)
 
         cur.close()
@@ -313,19 +302,24 @@ def threaded_wget():
 
 
     dead_thread_count = 0
+    robo_resurrection_limit = 100
     while True:
         #keep the main threadr running for ctr+c
         dead_threads =  num_thread - (threading.active_count() - 1 ) # -1 to exclude main thread
         print(f'total thread:{threading.active_count()} , dead thread: {dead_threads}')
         sleep(10)
 
-         if dead_threads > 0:
+        if dead_threads > 0:
             dead_thread_count += dead_threads
+        
+        if dead_thread_count >= robo_resurrection_limit:
+            sys.exit(1)
 
-            for _ in range(dead_threads):
-                gs = threading.Thread(target=main_scrape)
-                gs.daemon = True
-                gs.start()
+        for _ in range(dead_threads):
+            print('thread died ,resurrecting')
+            gs = threading.Thread(target=downloader,args=(max_size,))
+            gs.daemon = True
+            gs.start()
 
 
 if __name__ == "__main__":
