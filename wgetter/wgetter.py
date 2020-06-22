@@ -272,6 +272,7 @@ def downloader(max_size):
         for fol in folder_to_remove:
             delete_folder(fol)
 
+
         if len(all_data) == 0:
             sys.exit(0)
 
@@ -283,6 +284,8 @@ def downloader(max_size):
             net_location = uobj.netloc
             folder_to_remove.clear()
             folder_to_remove.append(net_location)
+            if os.path.exists(net_location+'.zip'):
+                os.remove(net_location+'.zip')
 
         cur.close()
         conn.close()
